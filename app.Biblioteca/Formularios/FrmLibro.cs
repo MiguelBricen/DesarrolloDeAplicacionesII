@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace app.Biblioteca.Formularios
@@ -106,6 +107,47 @@ namespace app.Biblioteca.Formularios
             dgvLibro.Columns["CategoriaNombre"].HeaderText = "CATEGORÍA";
             dgvLibro.Columns["anioPublicacion"].HeaderText = "AÑO DE PUBLICACIÓN";
         }
+        // Guarda el color original temporalmente
+        private Color colorOriginal;
+        // Evento MouseDown (cuando el botón se presiona)
+        private void Boton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (sender is FontAwesome.Sharp.IconButton boton)
+            {
+                colorOriginal = boton.BackColor;
+
+                // Efecto presionado - oscurecer color
+                boton.BackColor = ControlPaint.Dark(boton.BackColor, 0.2f);
+                boton.FlatAppearance.BorderSize = 1;
+                boton.FlatAppearance.BorderColor = Color.Black;
+
+                // Efecto visual sutil
+                boton.Padding = new Padding(boton.Padding.Left, boton.Padding.Top + 1, boton.Padding.Right, boton.Padding.Bottom - 1);
+
+                boton.BackColor = Color.FromArgb(
+                    Math.Max(0, boton.BackColor.R - 20),
+                    Math.Max(0, boton.BackColor.G - 20),
+                    Math.Max(0, boton.BackColor.B - 20)
+                );
+
+            }
+        }
+        // Evento MouseUp (cuando se suelta el botón)
+        private void Boton_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (sender is FontAwesome.Sharp.IconButton boton)
+            {
+                // Restaura color original
+                boton.BackColor = colorOriginal;
+                boton.FlatAppearance.BorderSize = 0;
+
+                // Restaura padding
+                boton.Padding = new Padding(boton.Padding.Left, boton.Padding.Top - 1, boton.Padding.Right, boton.Padding.Bottom + 1);
+            }
+        }
+
+
+
         #endregion
 
         #region 1 BOTONES DE COMANDO
@@ -162,6 +204,10 @@ namespace app.Biblioteca.Formularios
                 }
             }
         }
+        private void iconCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         #endregion
 
         #region  2 EVENTOS DEL FORMULARIO
@@ -169,6 +215,16 @@ namespace app.Biblioteca.Formularios
         {
 
             ListarRegistro();
+
+            // Asignar eventos de click dinámicamente
+            iconAgregar.MouseDown += Boton_MouseDown;
+            iconAgregar.MouseUp += Boton_MouseUp;
+
+            iconEliminar.MouseDown += Boton_MouseDown;
+            iconEliminar.MouseUp += Boton_MouseUp;
+
+            iconCerrar.MouseDown += Boton_MouseDown;
+            iconCerrar.MouseUp += Boton_MouseUp;
         }
         #endregion
 
