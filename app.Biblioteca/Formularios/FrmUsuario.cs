@@ -47,7 +47,6 @@ namespace app.Biblioteca.Formularios
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-
         private void FormatoGridView()
         {
             dgvListado.Columns[0].Visible = false;

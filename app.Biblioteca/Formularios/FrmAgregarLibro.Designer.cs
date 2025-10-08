@@ -60,6 +60,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlNuevoAutor = new System.Windows.Forms.Panel();
+            this.txtApellidoAutor = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtIdAutor = new Guna.UI2.WinForms.Guna2TextBox();
             this.iconCancelarAutor = new FontAwesome.Sharp.IconButton();
             this.iconEliminarAutor = new FontAwesome.Sharp.IconButton();
@@ -69,7 +70,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.txtApellidoAutor = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Elipse4 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -82,6 +83,7 @@
             // 
             // iconGuardar
             // 
+            this.iconGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(40)))), ((int)(((byte)(106)))));
             this.iconGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconGuardar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -99,11 +101,12 @@
             this.iconGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.iconGuardar, "Guardar registro");
-            this.iconGuardar.UseVisualStyleBackColor = true;
+            this.iconGuardar.UseVisualStyleBackColor = false;
             this.iconGuardar.Click += new System.EventHandler(this.iconGuardar_Click);
             // 
             // iconCerrar
             // 
+            this.iconCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(87)))), ((int)(((byte)(21)))));
             this.iconCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -120,7 +123,7 @@
             this.iconCerrar.Text = "Cerrar";
             this.iconCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.iconCerrar, "Cerrar ventana");
-            this.iconCerrar.UseVisualStyleBackColor = true;
+            this.iconCerrar.UseVisualStyleBackColor = false;
             this.iconCerrar.Click += new System.EventHandler(this.iconCerrar_Click);
             // 
             // errorIcono
@@ -134,6 +137,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.cboCategoria, 0, 7);
@@ -335,13 +339,13 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(113)))), ((int)(((byte)(233)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 50);
+            this.panel1.Size = new System.Drawing.Size(979, 50);
             this.panel1.TabIndex = 7;
             // 
             // label1
@@ -350,7 +354,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(145, 9);
+            this.label1.Location = new System.Drawing.Point(400, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 25);
             this.label1.TabIndex = 0;
@@ -413,7 +417,7 @@
             this.txtIdCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtIdCategoria.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdCategoria.HoverState.Parent = this.txtIdCategoria;
-            this.txtIdCategoria.Location = new System.Drawing.Point(5, 225);
+            this.txtIdCategoria.Location = new System.Drawing.Point(8, 252);
             this.txtIdCategoria.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtIdCategoria.Name = "txtIdCategoria";
             this.txtIdCategoria.PasswordChar = '\0';
@@ -431,7 +435,7 @@
             this.iconCancelarCategoria.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconCancelarCategoria.IconColor = System.Drawing.Color.Black;
             this.iconCancelarCategoria.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconCancelarCategoria.Location = new System.Drawing.Point(104, 225);
+            this.iconCancelarCategoria.Location = new System.Drawing.Point(104, 247);
             this.iconCancelarCategoria.Name = "iconCancelarCategoria";
             this.iconCancelarCategoria.Size = new System.Drawing.Size(119, 40);
             this.iconCancelarCategoria.TabIndex = 5;
@@ -447,7 +451,7 @@
             this.iconEliminarCategoria.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconEliminarCategoria.IconColor = System.Drawing.Color.Black;
             this.iconEliminarCategoria.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconEliminarCategoria.Location = new System.Drawing.Point(104, 174);
+            this.iconEliminarCategoria.Location = new System.Drawing.Point(104, 192);
             this.iconEliminarCategoria.Name = "iconEliminarCategoria";
             this.iconEliminarCategoria.Size = new System.Drawing.Size(119, 40);
             this.iconEliminarCategoria.TabIndex = 4;
@@ -463,7 +467,7 @@
             this.iconGuardarCategoria.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconGuardarCategoria.IconColor = System.Drawing.Color.Black;
             this.iconGuardarCategoria.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconGuardarCategoria.Location = new System.Drawing.Point(104, 124);
+            this.iconGuardarCategoria.Location = new System.Drawing.Point(104, 136);
             this.iconGuardarCategoria.Name = "iconGuardarCategoria";
             this.iconGuardarCategoria.Size = new System.Drawing.Size(119, 40);
             this.iconGuardarCategoria.TabIndex = 3;
@@ -536,7 +540,7 @@
             // 
             // pnlNuevoAutor
             // 
-            this.pnlNuevoAutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(15)))));
+            this.pnlNuevoAutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
             this.pnlNuevoAutor.Controls.Add(this.txtApellidoAutor);
             this.pnlNuevoAutor.Controls.Add(this.txtIdAutor);
             this.pnlNuevoAutor.Controls.Add(this.iconCancelarAutor);
@@ -547,10 +551,36 @@
             this.pnlNuevoAutor.Controls.Add(this.panel4);
             this.pnlNuevoAutor.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlNuevoAutor.ForeColor = System.Drawing.Color.White;
-            this.pnlNuevoAutor.Location = new System.Drawing.Point(482, 69);
+            this.pnlNuevoAutor.Location = new System.Drawing.Point(725, 69);
             this.pnlNuevoAutor.Name = "pnlNuevoAutor";
-            this.pnlNuevoAutor.Size = new System.Drawing.Size(228, 193);
+            this.pnlNuevoAutor.Size = new System.Drawing.Size(228, 362);
             this.pnlNuevoAutor.TabIndex = 11;
+            // 
+            // txtApellidoAutor
+            // 
+            this.txtApellidoAutor.BorderRadius = 15;
+            this.txtApellidoAutor.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtApellidoAutor.DefaultText = "";
+            this.txtApellidoAutor.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtApellidoAutor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtApellidoAutor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtApellidoAutor.DisabledState.Parent = this.txtApellidoAutor;
+            this.txtApellidoAutor.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtApellidoAutor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtApellidoAutor.FocusedState.Parent = this.txtApellidoAutor;
+            this.txtApellidoAutor.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellidoAutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtApellidoAutor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtApellidoAutor.HoverState.Parent = this.txtApellidoAutor;
+            this.txtApellidoAutor.Location = new System.Drawing.Point(5, 127);
+            this.txtApellidoAutor.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtApellidoAutor.Name = "txtApellidoAutor";
+            this.txtApellidoAutor.PasswordChar = '\0';
+            this.txtApellidoAutor.PlaceholderText = "Categoría";
+            this.txtApellidoAutor.SelectedText = "";
+            this.txtApellidoAutor.ShadowDecoration.Parent = this.txtApellidoAutor;
+            this.txtApellidoAutor.Size = new System.Drawing.Size(218, 31);
+            this.txtApellidoAutor.TabIndex = 7;
             // 
             // txtIdAutor
             // 
@@ -568,7 +598,7 @@
             this.txtIdAutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtIdAutor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdAutor.HoverState.Parent = this.txtIdAutor;
-            this.txtIdAutor.Location = new System.Drawing.Point(5, 225);
+            this.txtIdAutor.Location = new System.Drawing.Point(8, 298);
             this.txtIdAutor.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtIdAutor.Name = "txtIdAutor";
             this.txtIdAutor.PasswordChar = '\0';
@@ -663,7 +693,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(15)))));
             this.panel4.Controls.Add(this.label8);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -675,7 +705,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(0)))), ((int)(((byte)(15)))));
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(78, 10);
@@ -689,38 +719,17 @@
             this.guna2Elipse3.BorderRadius = 15;
             this.guna2Elipse3.TargetControl = this.pnlNuevoAutor;
             // 
-            // txtApellidoAutor
+            // guna2Elipse4
             // 
-            this.txtApellidoAutor.BorderRadius = 15;
-            this.txtApellidoAutor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtApellidoAutor.DefaultText = "";
-            this.txtApellidoAutor.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtApellidoAutor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtApellidoAutor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtApellidoAutor.DisabledState.Parent = this.txtApellidoAutor;
-            this.txtApellidoAutor.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtApellidoAutor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellidoAutor.FocusedState.Parent = this.txtApellidoAutor;
-            this.txtApellidoAutor.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApellidoAutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtApellidoAutor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellidoAutor.HoverState.Parent = this.txtApellidoAutor;
-            this.txtApellidoAutor.Location = new System.Drawing.Point(5, 127);
-            this.txtApellidoAutor.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.txtApellidoAutor.Name = "txtApellidoAutor";
-            this.txtApellidoAutor.PasswordChar = '\0';
-            this.txtApellidoAutor.PlaceholderText = "Categoría";
-            this.txtApellidoAutor.SelectedText = "";
-            this.txtApellidoAutor.ShadowDecoration.Parent = this.txtApellidoAutor;
-            this.txtApellidoAutor.Size = new System.Drawing.Size(218, 31);
-            this.txtApellidoAutor.TabIndex = 7;
+            this.guna2Elipse4.BorderRadius = 15;
+            this.guna2Elipse4.TargetControl = this.pnlNuevoAutor;
             // 
             // FrmAgregarLibro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(469, 449);
+            this.ClientSize = new System.Drawing.Size(979, 449);
             this.Controls.Add(this.pnlNuevoAutor);
             this.Controls.Add(this.pnlNuevaCategoria);
             this.Controls.Add(this.iconNuevoActor);
@@ -796,5 +805,6 @@
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
         private Guna.UI2.WinForms.Guna2TextBox txtApellidoAutor;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse4;
     }
 }

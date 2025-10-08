@@ -1,13 +1,7 @@
 ﻿using app.Biblioteca.Utilidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.Biblioteca.Formularios
@@ -19,7 +13,7 @@ namespace app.Biblioteca.Formularios
           
             InitializeComponent();
         }
-
+        #region 0 METODOS
         private void ListarRegistro()
         {
             try
@@ -44,24 +38,13 @@ namespace app.Biblioteca.Formularios
                     dgvLibro.DataSource = dt;
                     // dgvListado.Columns[0].Visible = false;
                     FormatoGridView();
-                    
-
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-
-        private void iconAgregar_Click(object sender, EventArgs e)
-        {
-            FrmAgregarLibro frm = new FrmAgregarLibro();
-            frm.registroAgregado += ListarRegistro;
-            MostrarModal.MostrarConCapa(this, frm);
-        }
-
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             try
@@ -93,7 +76,7 @@ namespace app.Biblioteca.Formularios
                     {
                         dgvLibro.DataSource = dt;
                         FormatoGridView();
-                    
+
 
 
                     }
@@ -123,7 +106,15 @@ namespace app.Biblioteca.Formularios
             dgvLibro.Columns["CategoriaNombre"].HeaderText = "CATEGORÍA";
             dgvLibro.Columns["anioPublicacion"].HeaderText = "AÑO DE PUBLICACIÓN";
         }
+        #endregion
 
+        #region 1 BOTONES DE COMANDO
+        private void iconAgregar_Click(object sender, EventArgs e)
+        {
+            FrmAgregarLibro frm = new FrmAgregarLibro();
+            frm.registroAgregado += ListarRegistro;
+            MostrarModal.MostrarConCapa(this, frm);
+        }
         private void iconEliminar_Click(object sender, EventArgs e)
         {
             if (dgvLibro.CurrentCell != null)
@@ -171,13 +162,17 @@ namespace app.Biblioteca.Formularios
                 }
             }
         }
+        #endregion
 
+        #region  2 EVENTOS DEL FORMULARIO
         private void FrmLibro_Load(object sender, EventArgs e)
         {
-           
+
             ListarRegistro();
         }
+        #endregion
 
+        #region 3 EVENTO DEL DATAGRIDVIEW
         private void dgvListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -208,5 +203,6 @@ namespace app.Biblioteca.Formularios
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
     }
 }

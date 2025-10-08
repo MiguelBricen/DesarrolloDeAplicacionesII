@@ -19,12 +19,9 @@ namespace app.Biblioteca.Formularios
         #region 0 INICIALIZACIÓN (CONSTRUCTOR Y EVENTO)
         public FrmAgregarLibro()
         {
-            
             InitializeComponent();
             CargarAutores();
             CargarCategorias();
-
-
             txtTitulo.Focus(); // Enfoca el campo principal
         }
         public FrmAgregarLibro(int idLibro, string titulo, int idAutor, int idCategoria, DateTime anioPublicacion)
@@ -330,17 +327,9 @@ namespace app.Biblioteca.Formularios
         {
             Close();
         }
-
-
-
-
-
         #endregion
 
-        #region CRUD PANAEL CATEGORIA Y AUTOR 
-
-        #endregion
-
+        #region 3 CRUD PANAEL CATEGORIA Y AUTOR 
         private void iconNuevaCategoria_Click(object sender, EventArgs e)
         {
             // 🔹 Mostrar panel de categoría y ocultar el de autor
@@ -364,7 +353,6 @@ namespace app.Biblioteca.Formularios
 
             txtNombreCategoria.Focus();
         }
-
         private void iconNuevoActor_Click(object sender, EventArgs e)
         {
             // 🔹 Mostrar panel de autor y ocultar el de categoría
@@ -393,19 +381,16 @@ namespace app.Biblioteca.Formularios
 
             txtNombreAutor.Focus();
         }
-
         private void iconCancelarCategoria_Click(object sender, EventArgs e)
         {
             pnlNuevaCategoria.Visible = false;
             this.Size = new Size(463, 449); // 🔹 Volvemos al tamaño normal
         }
-
         private void iconCancelarAutor_Click(object sender, EventArgs e)
         {
             pnlNuevoAutor.Visible = false;
             this.Size = new Size(463, 449); // 🔹 Volvemos al tamaño normal
         }
-
         private void iconGuardarCategoria_Click(object sender, EventArgs e)
         {
             try
@@ -562,7 +547,6 @@ namespace app.Biblioteca.Formularios
             pnlNuevoAutor.Visible = false;
             this.Size = new Size(462, 449);
         }
-
         private void iconEliminarCategoria_Click(object sender, EventArgs e)
         {
             try
@@ -635,7 +619,6 @@ namespace app.Biblioteca.Formularios
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void iconEliminarAutor_Click(object sender, EventArgs e)
         {
             try
@@ -711,7 +694,6 @@ namespace app.Biblioteca.Formularios
             cboCategoria.SelectedIndex = -1;
             txtNombreCategoria.Focus();
         }
-
         private void LimpiarControlesAutor()
         {
             txtIdAutor.Clear();
@@ -720,6 +702,6 @@ namespace app.Biblioteca.Formularios
             cboAutor.SelectedIndex = -1;
             txtNombreAutor.Focus();
         }
+        #endregion
     }
-
 }
