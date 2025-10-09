@@ -52,9 +52,9 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolCerrarSesion = new FontAwesome.Sharp.IconToolStripButton();
             this.panelContendor = new System.Windows.Forms.Panel();
-            this.picImagen = new System.Windows.Forms.PictureBox();
             this.toolUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.picImagen = new System.Windows.Forms.PictureBox();
             this.panelSuperior.SuspendLayout();
             this.panelSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -271,6 +271,7 @@
             this.toolCerrarSesion.Name = "toolCerrarSesion";
             this.toolCerrarSesion.Size = new System.Drawing.Size(170, 35);
             this.toolCerrarSesion.Text = "Cerrar sesión";
+            this.toolCerrarSesion.Click += new System.EventHandler(this.toolCerrarSesion_Click);
             // 
             // panelContendor
             // 
@@ -281,17 +282,6 @@
             this.panelContendor.Name = "panelContendor";
             this.panelContendor.Size = new System.Drawing.Size(1106, 625);
             this.panelContendor.TabIndex = 8;
-            // 
-            // picImagen
-            // 
-            this.picImagen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picImagen.Image = global::app.Biblioteca.Properties.Resources.biblioteca;
-            this.picImagen.Location = new System.Drawing.Point(0, 0);
-            this.picImagen.Name = "picImagen";
-            this.picImagen.Size = new System.Drawing.Size(1106, 625);
-            this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picImagen.TabIndex = 0;
-            this.picImagen.TabStop = false;
             // 
             // toolUsuario
             // 
@@ -309,6 +299,17 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(143, 24);
             this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // picImagen
+            // 
+            this.picImagen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picImagen.Image = global::app.Biblioteca.Properties.Resources.biblioteca;
+            this.picImagen.Location = new System.Drawing.Point(0, 0);
+            this.picImagen.Name = "picImagen";
+            this.picImagen.Size = new System.Drawing.Size(1106, 625);
+            this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImagen.TabIndex = 0;
+            this.picImagen.TabStop = false;
             // 
             // MDIMenu
             // 

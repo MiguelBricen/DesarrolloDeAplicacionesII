@@ -14,10 +14,15 @@ namespace app.Biblioteca.Formularios
         {
             InitializeComponent();
             txtNombre.Focus();
+            this.KeyPress += ValidacionEntrada.PasarFocus;
+            this.KeyDown += ValidacionEntrada.ControlesEsc;
         }
         public FrmAgregarUsuario(int idUsuario, string nombre, string apellido, string telefono, string email)
         {
             InitializeComponent();
+
+            this.KeyPress += ValidacionEntrada.PasarFocus;
+            this.KeyDown += ValidacionEntrada.ControlesEsc;
 
             txtId.Text = idUsuario.ToString();
             txtNombre.Text = nombre;
@@ -55,6 +60,7 @@ namespace app.Biblioteca.Formularios
                     {
                         MessageBox.Show("Registro almacenado correctamente", "Información",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Close();
                        
                     }
                     else

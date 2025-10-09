@@ -103,6 +103,7 @@
     <Compile Include="Utilidades\ConexionDB.cs" />
     <Compile Include="Utilidades\MostrarModal.cs" />
     <Compile Include="Utilidades\ParametroDeConexion.cs" />
+    <Compile Include="Utilidades\ValidacionEntrada.cs" />
     <EmbeddedResource Include="Formularios\FrmAgregarLibro.resx">
       <DependentUpon>FrmAgregarLibro.cs</DependentUpon>
     </EmbeddedResource>

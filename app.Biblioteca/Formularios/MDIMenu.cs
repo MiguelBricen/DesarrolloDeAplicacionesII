@@ -66,6 +66,11 @@ namespace app.Biblioteca.Formularios
         {
             AbrirFormulario(new FrmLibro(), true);
         }
+
+        private void toolCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         #endregion
 
 

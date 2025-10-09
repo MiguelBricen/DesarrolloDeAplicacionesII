@@ -65,7 +65,7 @@
             this.iconCerrar.Name = "iconCerrar";
             this.iconCerrar.Padding = new System.Windows.Forms.Padding(5);
             this.iconCerrar.Size = new System.Drawing.Size(130, 46);
-            this.iconCerrar.TabIndex = 2;
+            this.iconCerrar.TabIndex = 9;
             this.iconCerrar.Text = "Cerrar";
             this.iconCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.iconCerrar, "Cerrar ventana");
@@ -86,7 +86,7 @@
             this.iconGuardar.Name = "iconGuardar";
             this.iconGuardar.Padding = new System.Windows.Forms.Padding(5);
             this.iconGuardar.Size = new System.Drawing.Size(142, 46);
-            this.iconGuardar.TabIndex = 0;
+            this.iconGuardar.TabIndex = 8;
             this.iconGuardar.Text = "Guardar";
             this.iconGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -268,7 +268,7 @@
             this.txtTelefono.SelectedText = "";
             this.txtTelefono.ShadowDecoration.Parent = this.txtTelefono;
             this.txtTelefono.Size = new System.Drawing.Size(377, 36);
-            this.txtTelefono.TabIndex = 8;
+            this.txtTelefono.TabIndex = 6;
             // 
             // txtApellido
             // 
@@ -294,7 +294,7 @@
             this.txtApellido.SelectedText = "";
             this.txtApellido.ShadowDecoration.Parent = this.txtApellido;
             this.txtApellido.Size = new System.Drawing.Size(377, 36);
-            this.txtApellido.TabIndex = 9;
+            this.txtApellido.TabIndex = 5;
             // 
             // tableLayoutPanel3
             // 

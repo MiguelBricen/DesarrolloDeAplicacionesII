@@ -155,6 +155,13 @@ namespace app.Biblioteca.Formularios
                     MessageBox.Show("Error inesperado al eliminar: " + ex.Message);
                 }
             }
+
+
+        }
+
+        private void iconCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
         #endregion
 
@@ -190,5 +197,7 @@ namespace app.Biblioteca.Formularios
             }
         }
         #endregion
+
+       
     }
 }
