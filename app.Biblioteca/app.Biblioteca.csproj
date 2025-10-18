@@ -68,6 +68,12 @@
     <Compile Include="Formularios\FrmAgregarLibro.Designer.cs">
       <DependentUpon>FrmAgregarLibro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmAgregarPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmAgregarPrestamo.Designer.cs">
+      <DependentUpon>FrmAgregarPrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmAgregarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="Formularios\FrmLibro.Designer.cs">
       <DependentUpon>FrmLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmPrestamo.Designer.cs">
+      <DependentUpon>FrmPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmUsuario.cs">
       <SubType>Form</SubType>
@@ -107,6 +119,9 @@
     <EmbeddedResource Include="Formularios\FrmAgregarLibro.resx">
       <DependentUpon>FrmAgregarLibro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmAgregarPrestamo.resx">
+      <DependentUpon>FrmAgregarPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmAgregarUsuario.resx">
       <DependentUpon>FrmAgregarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmLibro.resx">
       <DependentUpon>FrmLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmPrestamo.resx">
+      <DependentUpon>FrmPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmUsuario.resx">
       <DependentUpon>FrmUsuario.cs</DependentUpon>
@@ -147,7 +165,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\LibroAbierto %281%29.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\biblioteca.jpg" />
   </ItemGroup>
@@ -156,6 +176,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Libro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrestarLibro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Agregar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Préstamo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Agregar21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Agregar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Teléfono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apellido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nombre.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

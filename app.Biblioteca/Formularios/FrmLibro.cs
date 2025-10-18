@@ -15,37 +15,6 @@ namespace app.Biblioteca.Formularios
             InitializeComponent();
         }
         #region 0 METODOS
-        private void ListarRegistro()
-        {
-            try
-            {
-                string connetionString = conexionDB.ObtenerConexion();
-                using (SqlConnection conexion = new SqlConnection(connetionString))
-                {
-                    string consulta = @"SELECT L.idLibro, L.titulo, 
-                                   L.idAutor, A.nombre AS AutorNombre, 
-                                   L.idCategoria, C.nombre AS CategoriaNombre, 
-                                                                   L.anioPublicacion
-                                 FROM TblLibro L
-                                 INNER JOIN TblAutor A ON L.idAutor = A.idAutor
-                                 INNER JOIN TblCategoria C ON L.idCategoria = C.idCategoria;";
-
-                    //Datossensibles como la clave del usuario no los pasamos 
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(consulta, conexion);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    dgvLibro.DataSource = dt;
-                    // dgvListado.Columns[0].Visible = false;
-                    FormatoGridView();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             try
@@ -55,18 +24,18 @@ namespace app.Biblioteca.Formularios
                 {
                     string texto = txtBuscar.Text.Trim();
                     string consultaSQL = $@"
-                                        SELECT L.idLibro, L.titulo,
-                                               L.idAutor, A.nombre AS AutorNombre,
-                                               L.idCategoria, C.nombre AS CategoriaNombre,
-                                               L.anioPublicacion
-                                        FROM TblLibro L
-                                        INNER JOIN TblAutor A ON L.idAutor = A.idAutor
-                                        INNER JOIN TblCategoria C ON L.idCategoria = C.idCategoria
-                                        WHERE L.titulo LIKE '%{texto}%'
-                                           OR A.nombre LIKE '%{texto}%'
-                                           OR C.nombre LIKE '%{texto}%'
-                                           OR CAST(L.anioPublicacion AS NVARCHAR) LIKE '%{texto}%'
-                                                                                                   ";
+                    SELECT L.idLibro, L.titulo,
+                           L.idAutor, A.nombre AS AutorNombre,
+                           L.idCategoria, C.nombre AS CategoriaNombre,
+                           L.anioPublicacion,
+                           L.cantidad
+                    FROM TblLibro L
+                    INNER JOIN TblAutor A ON L.idAutor = A.idAutor
+                    INNER JOIN TblCategoria C ON L.idCategoria = C.idCategoria
+                    WHERE L.titulo LIKE '%{texto}%'
+                       OR A.nombre LIKE '%{texto}%'
+                       OR C.nombre LIKE '%{texto}%'
+                       OR CAST(L.anioPublicacion AS NVARCHAR) LIKE '%{texto}%';";
 
 
                     SqlDataAdapter adapter = new SqlDataAdapter(consultaSQL, conexion);
@@ -94,6 +63,39 @@ namespace app.Biblioteca.Formularios
                 MessageBox.Show("Error al buscar: " + ex.Message);
             }
         }
+        private void ListarRegistro()
+        {
+            try
+            {
+                string connetionString = conexionDB.ObtenerConexion();
+                using (SqlConnection conexion = new SqlConnection(connetionString))
+                {
+                    string consulta = @"SELECT L.idLibro, L.titulo, 
+                           L.idAutor, A.nombre AS AutorNombre, 
+                           L.idCategoria, C.nombre AS CategoriaNombre, 
+                           L.anioPublicacion,
+                           L.cantidad
+                     FROM TblLibro L
+                     INNER JOIN TblAutor A ON L.idAutor = A.idAutor
+                     INNER JOIN TblCategoria C ON L.idCategoria = C.idCategoria;";
+
+                    //Datossensibles como la clave del usuario no los pasamos 
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(consulta, conexion);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dgvLibro.DataSource = dt;
+                    // dgvListado.Columns[0].Visible = false;
+                    FormatoGridView();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+       
         private void FormatoGridView()
         {
             // 🔹 Ocultar columnas de ID
@@ -102,10 +104,15 @@ namespace app.Biblioteca.Formularios
             dgvLibro.Columns["idCategoria"].Visible = false;
 
             // 🔹 Ajustar columnas visibles
+            dgvLibro.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvLibro.Columns["titulo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
             dgvLibro.Columns["titulo"].HeaderText = "TÍTULO";
             dgvLibro.Columns["AutorNombre"].HeaderText = "AUTOR";
             dgvLibro.Columns["CategoriaNombre"].HeaderText = "CATEGORÍA";
             dgvLibro.Columns["anioPublicacion"].HeaderText = "AÑO DE PUBLICACIÓN";
+            dgvLibro.Columns["cantidad"].HeaderText = "CANTIDAD DISPONIBLE";
+            dgvLibro.Columns["cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         // Guarda el color original temporalmente
         private Color colorOriginal;
@@ -245,10 +252,12 @@ namespace app.Biblioteca.Formularios
                     int idCategoria = Convert.ToInt32(fila.Cells["idCategoria"].Value);
                     int anio = Convert.ToInt32(fila.Cells["anioPublicacion"].Value);
                     DateTime anioPublicacion = new DateTime(anio, 1, 1); // Creamos fecha con solo el año
+                    int cantidad = Convert.ToInt32(fila.Cells["cantidad"].Value); // ✅ Nueva línea
+
 
 
                     // Abrimos el formulario FrmAgregarLibro en modo edición
-                    FrmAgregarLibro frm = new FrmAgregarLibro(idLibro, titulo, idAutor, idCategoria, anioPublicacion);
+                    FrmAgregarLibro frm = new FrmAgregarLibro(idLibro, titulo, idAutor, idCategoria, anioPublicacion, cantidad);
                     frm.registroAgregado += ListarRegistro; // Actualiza el listado al guardar
                     MostrarModal.MostrarConCapa(this, frm); // Mostrar con fondo oscuro
                 }
@@ -260,5 +269,7 @@ namespace app.Biblioteca.Formularios
             }
         }
         #endregion
+
+       
     }
 }

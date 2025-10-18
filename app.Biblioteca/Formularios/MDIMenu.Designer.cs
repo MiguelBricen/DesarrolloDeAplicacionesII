@@ -31,12 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIMenu));
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnUsuario = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnPrestamo = new System.Windows.Forms.Button();
+            this.btnLibro = new System.Windows.Forms.Button();
             this.guna2ColorTransition1 = new Guna.UI2.WinForms.Guna2ColorTransition(this.components);
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelSidebar = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.iconUsuario = new FontAwesome.Sharp.IconButton();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.toolMenuSuperior = new System.Windows.Forms.ToolStrip();
             this.toolUsuari = new FontAwesome.Sharp.IconDropDownButton();
@@ -50,6 +56,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripPrestamo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolGrafícos = new FontAwesome.Sharp.IconDropDownButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolCerrarSesion = new FontAwesome.Sharp.IconToolStripButton();
             this.panelContendor = new System.Windows.Forms.Panel();
             this.toolUsuario = new System.Windows.Forms.ToolStripButton();
@@ -57,12 +66,91 @@
             this.picImagen = new System.Windows.Forms.PictureBox();
             this.panelSuperior.SuspendLayout();
             this.panelSidebar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.toolMenuSuperior.SuspendLayout();
             this.panelContendor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnUsuario
+            // 
+            this.btnUsuario.BackColor = System.Drawing.Color.Goldenrod;
+            this.btnUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUsuario.FlatAppearance.BorderSize = 0;
+            this.btnUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuario.ForeColor = System.Drawing.Color.White;
+            this.btnUsuario.Image = global::app.Biblioteca.Properties.Resources.Agregar2;
+            this.btnUsuario.Location = new System.Drawing.Point(2, 126);
+            this.btnUsuario.Name = "btnUsuario";
+            this.btnUsuario.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnUsuario.Size = new System.Drawing.Size(163, 76);
+            this.btnUsuario.TabIndex = 9;
+            this.btnUsuario.Text = "Usuario";
+            this.btnUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip.SetToolTip(this.btnUsuario, "Registro de Usuarios");
+            this.btnUsuario.UseVisualStyleBackColor = false;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Red;
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.FlatAppearance.BorderSize = 0;
+            this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Image = global::app.Biblioteca.Properties.Resources.Salir1;
+            this.btnCerrar.Location = new System.Drawing.Point(2, 410);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnCerrar.Size = new System.Drawing.Size(163, 76);
+            this.btnCerrar.TabIndex = 5;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip.SetToolTip(this.btnCerrar, "Salir del Sistema");
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            // 
+            // btnPrestamo
+            // 
+            this.btnPrestamo.BackColor = System.Drawing.Color.Silver;
+            this.btnPrestamo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrestamo.FlatAppearance.BorderSize = 0;
+            this.btnPrestamo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.btnPrestamo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrestamo.ForeColor = System.Drawing.Color.White;
+            this.btnPrestamo.Image = global::app.Biblioteca.Properties.Resources.PrestarLibro;
+            this.btnPrestamo.Location = new System.Drawing.Point(2, 314);
+            this.btnPrestamo.Name = "btnPrestamo";
+            this.btnPrestamo.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnPrestamo.Size = new System.Drawing.Size(163, 76);
+            this.btnPrestamo.TabIndex = 4;
+            this.btnPrestamo.Text = "Prestamo";
+            this.btnPrestamo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip.SetToolTip(this.btnPrestamo, "Registro de Prestamos de Libros");
+            this.btnPrestamo.UseVisualStyleBackColor = false;
+            // 
+            // btnLibro
+            // 
+            this.btnLibro.BackColor = System.Drawing.Color.OliveDrab;
+            this.btnLibro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLibro.FlatAppearance.BorderSize = 0;
+            this.btnLibro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.btnLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLibro.ForeColor = System.Drawing.Color.White;
+            this.btnLibro.Image = global::app.Biblioteca.Properties.Resources.Libro;
+            this.btnLibro.Location = new System.Drawing.Point(2, 221);
+            this.btnLibro.Name = "btnLibro";
+            this.btnLibro.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnLibro.Size = new System.Drawing.Size(163, 76);
+            this.btnLibro.TabIndex = 3;
+            this.btnLibro.Text = "Libro";
+            this.btnLibro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip.SetToolTip(this.btnLibro, "Registro de Libros");
+            this.btnLibro.UseVisualStyleBackColor = false;
             // 
             // guna2ColorTransition1
             // 
@@ -97,9 +185,15 @@
             // 
             // panelSidebar
             // 
-            this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(137)))), ((int)(((byte)(17)))));
+            this.panelSidebar.Controls.Add(this.btnUsuario);
+            this.panelSidebar.Controls.Add(this.pictureBox4);
+            this.panelSidebar.Controls.Add(this.pictureBox3);
+            this.panelSidebar.Controls.Add(this.pictureBox2);
+            this.panelSidebar.Controls.Add(this.btnCerrar);
+            this.panelSidebar.Controls.Add(this.btnPrestamo);
+            this.panelSidebar.Controls.Add(this.btnLibro);
             this.panelSidebar.Controls.Add(this.pictureBox1);
-            this.panelSidebar.Controls.Add(this.iconUsuario);
             this.panelSidebar.Controls.Add(this.picLogo);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -108,36 +202,41 @@
             this.panelSidebar.Size = new System.Drawing.Size(166, 663);
             this.panelSidebar.TabIndex = 3;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.pictureBox4.Location = new System.Drawing.Point(1, 410);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(2, 76);
+            this.pictureBox4.TabIndex = 8;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.pictureBox3.Location = new System.Drawing.Point(1, 314);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(2, 76);
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.pictureBox2.Location = new System.Drawing.Point(1, 221);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(2, 76);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
             this.pictureBox1.Location = new System.Drawing.Point(1, 126);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(2, 76);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            // 
-            // iconUsuario
-            // 
-            this.iconUsuario.BackColor = System.Drawing.Color.Goldenrod;
-            this.iconUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconUsuario.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.iconUsuario.FlatAppearance.BorderSize = 0;
-            this.iconUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.iconUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconUsuario.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconUsuario.ForeColor = System.Drawing.Color.White;
-            this.iconUsuario.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
-            this.iconUsuario.IconColor = System.Drawing.Color.White;
-            this.iconUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconUsuario.IconSize = 32;
-            this.iconUsuario.Location = new System.Drawing.Point(2, 126);
-            this.iconUsuario.Name = "iconUsuario";
-            this.iconUsuario.Size = new System.Drawing.Size(163, 76);
-            this.iconUsuario.TabIndex = 1;
-            this.iconUsuario.Text = "Usuario";
-            this.iconUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconUsuario.UseVisualStyleBackColor = false;
             // 
             // picLogo
             // 
@@ -159,6 +258,7 @@
             this.toolStripSeparator3,
             this.toolPrestamo,
             this.toolStripSeparator8,
+            this.toolGrafícos,
             this.toolCerrarSesion});
             this.toolMenuSuperior.Location = new System.Drawing.Point(166, 70);
             this.toolMenuSuperior.Name = "toolMenuSuperior";
@@ -253,11 +353,39 @@
             this.toolStripPrestamo.Name = "toolStripPrestamo";
             this.toolStripPrestamo.Size = new System.Drawing.Size(233, 26);
             this.toolStripPrestamo.Text = "Listado de Prestamos";
+            this.toolStripPrestamo.Click += new System.EventHandler(this.toolStripPrestamo_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 38);
+            // 
+            // toolGrafícos
+            // 
+            this.toolGrafícos.AutoSize = false;
+            this.toolGrafícos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator2,
+            this.toolStripMenuItem1});
+            this.toolGrafícos.IconChar = FontAwesome.Sharp.IconChar.GripVertical;
+            this.toolGrafícos.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toolGrafícos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.toolGrafícos.IconSize = 30;
+            this.toolGrafícos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolGrafícos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolGrafícos.Name = "toolGrafícos";
+            this.toolGrafícos.Size = new System.Drawing.Size(130, 35);
+            this.toolGrafícos.Text = "Grafícos";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(154, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.toolStripMenuItem1.Text = "[Nombre]";
             // 
             // toolCerrarSesion
             // 
@@ -275,7 +403,7 @@
             // 
             // panelContendor
             // 
-            this.panelContendor.BackColor = System.Drawing.Color.White;
+            this.panelContendor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
             this.panelContendor.Controls.Add(this.picImagen);
             this.panelContendor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContendor.Location = new System.Drawing.Point(166, 108);
@@ -302,6 +430,7 @@
             // 
             // picImagen
             // 
+            this.picImagen.BackColor = System.Drawing.Color.White;
             this.picImagen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picImagen.Image = global::app.Biblioteca.Properties.Resources.biblioteca;
             this.picImagen.Location = new System.Drawing.Point(0, 0);
@@ -332,6 +461,9 @@
             this.panelSuperior.ResumeLayout(false);
             this.panelSuperior.PerformLayout();
             this.panelSidebar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.toolMenuSuperior.ResumeLayout(false);
@@ -365,8 +497,17 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripUsuario;
         private System.Windows.Forms.Panel panelContendor;
         private System.Windows.Forms.PictureBox picLogo;
-        private FontAwesome.Sharp.IconButton iconUsuario;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnLibro;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Button btnPrestamo;
+        private System.Windows.Forms.Button btnUsuario;
+        private FontAwesome.Sharp.IconDropDownButton toolGrafícos;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.PictureBox picImagen;
     }
 }

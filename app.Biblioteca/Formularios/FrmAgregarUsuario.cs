@@ -75,7 +75,7 @@ namespace app.Biblioteca.Formularios
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            LimpiarControles(tableLayoutPanel1);
+            LimpiarControles(tlpAgregarUsuario);
 
         }
         private void Actualizar(int id, string nombre, string apellido, string telefono, string email)
@@ -121,7 +121,7 @@ namespace app.Biblioteca.Formularios
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            LimpiarControles(tableLayoutPanel1);
+            LimpiarControles(tlpAgregarUsuario);
 
         }
         private void LimpiarControles(Control parent)
@@ -163,7 +163,7 @@ namespace app.Biblioteca.Formularios
             errorIcono.Clear();
             bool datosValidos = true;
 
-            foreach (Control control in tableLayoutPanel1.Controls)
+            foreach (Control control in tlpAgregarUsuario.Controls)
             {
                 if (control is Guna.UI2.WinForms.Guna2TextBox gunaTextBox)
                 {
@@ -174,6 +174,7 @@ namespace app.Biblioteca.Formularios
                     }
                 }
             }
+
 
             if (!datosValidos)
             {

@@ -1,13 +1,8 @@
 ﻿using app.Biblioteca.Utilidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace app.Biblioteca.Formularios
@@ -24,37 +19,39 @@ namespace app.Biblioteca.Formularios
             CargarCategorias();
             txtTitulo.Focus(); // Enfoca el campo principal
         }
-        public FrmAgregarLibro(int idLibro, string titulo, int idAutor, int idCategoria, DateTime anioPublicacion)
+        public FrmAgregarLibro(int idLibro, string titulo, int idAutor, int idCategoria, DateTime anioPublicacion, int cantidad)
         {
             InitializeComponent();
             CargarAutores();
             CargarCategorias();
 
-            txtId.Text = idLibro.ToString();
+            txtIdLibro.Text = idLibro.ToString();
             txtTitulo.Text = titulo;
             cboAutor.SelectedValue = idAutor;
             cboCategoria.SelectedValue = idCategoria;
-            dtpFechaPublicacion.Value = anioPublicacion;
+            dtpAnioPublicacion.Value = anioPublicacion;
+            numCantidad.Value = cantidad; // ✅ Aquí pasamos la cantidad
 
             txtTitulo.Focus();
         }
         #endregion
 
         #region 1 METODOS
-        private void Guardar(string titulo, int idAutor, int idCategoria, DateTime anioPublicacion)
+        private void Guardar(string titulo, int idAutor, int idCategoria, DateTime anioPublicacion, int cantidad)
         {
             try
             {
                 string connetionString = conexionDB.ObtenerConexion();
                 using (SqlConnection conexion = new SqlConnection(connetionString))
                 {
-                    string consulta = @"INSERT INTO TblLibro(titulo, idAutor, idCategoria, anioPublicacion)
-                                           VALUES(@Titulo, @IdAutor, @IdCategoria, @AnioPublicacion)";
+                    string consulta = @"INSERT INTO TblLibro(titulo, idAutor, idCategoria, anioPublicacion, cantidad)
+                                           VALUES(@Titulo, @IdAutor, @IdCategoria, @AnioPublicacion, @Cantidad)";
                     SqlCommand command = new SqlCommand(consulta, conexion);
                     command.Parameters.AddWithValue("@Titulo", titulo);
                     command.Parameters.AddWithValue("@IdAutor", idAutor);
                     command.Parameters.AddWithValue("@IdCategoria", idCategoria);
                     command.Parameters.AddWithValue("@AnioPublicacion", anioPublicacion.Year);
+                    command.Parameters.AddWithValue("@Cantidad", cantidad);
                     conexion.Open();
 
                     int resultado = command.ExecuteNonQuery();
@@ -70,6 +67,7 @@ namespace app.Biblioteca.Formularios
                           MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
+                    Close();
                 }
             }
             catch (Exception ex)
@@ -78,7 +76,7 @@ namespace app.Biblioteca.Formularios
             }
 
         }
-        private void Actualizar(int idLibro, string titulo, int idAutor, int idCategoria, DateTime anioPublicacion)
+        private void Actualizar(int idLibro, string titulo, int idAutor, int idCategoria, DateTime anioPublicacion, int cantidad)
         {
             try
             {
@@ -90,7 +88,8 @@ namespace app.Biblioteca.Formularios
                 SET titulo = @Titulo,
                     idAutor = @IdAutor,
                     idCategoria = @IdCategoria,
-                    anioPublicacion = @AnioPublicacion
+                    anioPublicacion = @AnioPublicacion,
+                    cantidad = @Cantidad
                 WHERE idLibro = @IdLibro";
 
                     SqlCommand command = new SqlCommand(consulta, conexion);
@@ -99,6 +98,7 @@ namespace app.Biblioteca.Formularios
                     command.Parameters.AddWithValue("@IdAutor", idAutor);
                     command.Parameters.AddWithValue("@IdCategoria", idCategoria);
                     command.Parameters.AddWithValue("@AnioPublicacion", anioPublicacion.Year);
+                    command.Parameters.AddWithValue("@Cantidad", cantidad);
 
                     conexion.Open();
 
@@ -107,13 +107,14 @@ namespace app.Biblioteca.Formularios
                     {
                         MessageBox.Show("Libro actualizado correctamente", "Información",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
+                        
                     }
                     else
                     {
                         MessageBox.Show("No se pudo actualizar el libro", "Información",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    Close();
                 }
             }
             catch (Exception ex)
@@ -239,6 +240,11 @@ namespace app.Biblioteca.Formularios
                     dtp.Value = DateTime.Now;
                 }
 
+                else if (control is NumericUpDown num)
+                {
+                    num.Value = 0; // 🔹 Reinicia la cantidad
+                }
+
                 // 🔹 Si el control contiene otros controles (como TableLayoutPanel o Panel)
                 else if (control.HasChildren)
                 {
@@ -253,34 +259,12 @@ namespace app.Biblioteca.Formularios
         #region 2 BOTONES DE COMANDO
         private void iconGuardar_Click(object sender, EventArgs e)
         {
+
             errorIcono.Clear();
             bool datosValidos = true;
 
-            // Validar que todos los campos obligatorios estén llenos
-            foreach (Control control in tableLayoutPanel1.Controls)
-            {
-                if (control is Guna.UI2.WinForms.Guna2TextBox gunaTextBox)
-                {
-                    if (string.IsNullOrWhiteSpace(gunaTextBox.Text))
-                    {
-                        errorIcono.SetError(gunaTextBox, "Este campo es obligatorio.");
-                        datosValidos = false;
-                    }
-                }
-            }
-
-            // Validar ComboBox
-            if (cboAutor.SelectedIndex == -1)
-            {
-                errorIcono.SetError(cboAutor, "Debe seleccionar un autor.");
-                datosValidos = false;
-            }
-
-            if (cboCategoria.SelectedIndex == -1)
-            {
-                errorIcono.SetError(cboCategoria, "Debe seleccionar una categoría.");
-                datosValidos = false;
-            }
+            // 🔁 Validar de forma recursiva todos los controles dentro del contenedor
+            ValidarControles(tlpAgregarLibro, ref datosValidos);
 
             if (!datosValidos)
             {
@@ -289,40 +273,84 @@ namespace app.Biblioteca.Formularios
                 return;
             }
 
-            // Obtener los datos del formulario
+            // ✅ Obtener datos del formulario
             string titulo = txtTitulo.Text.Trim();
             int idAutor = Convert.ToInt32(cboAutor.SelectedValue);
             int idCategoria = Convert.ToInt32(cboCategoria.SelectedValue);
-            DateTime anioPublicacion = dtpFechaPublicacion.Value;
+            DateTime anioPublicacion = dtpAnioPublicacion.Value;
+            int cantidad = (int)numCantidad.Value;
 
             try
             {
-                if (string.IsNullOrWhiteSpace(txtId.Text.Trim()))
+                if (string.IsNullOrWhiteSpace(txtIdLibro.Text.Trim()))
                 {
-                    // Nuevo registro
-                    Guardar(titulo, idAutor, idCategoria, anioPublicacion);
+                    Guardar(titulo, idAutor, idCategoria, anioPublicacion, cantidad);
                 }
                 else
                 {
-                    // Actualizar registro existente
-                    if (!int.TryParse(txtId.Text.Trim(), out int idLibro))
+                    if (!int.TryParse(txtIdLibro.Text.Trim(), out int idLibro))
                     {
                         MessageBox.Show("El ID no es válido.", "Validación",
                             MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
 
-                    Actualizar(idLibro, titulo, idAutor, idCategoria, anioPublicacion);
+                    Actualizar(idLibro, titulo, idAutor, idCategoria, anioPublicacion, cantidad);
                 }
 
-                registroAgregado?.Invoke(); // Notifica al formulario principal
+                registroAgregado?.Invoke();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            LimpiarControles(tableLayoutPanel1);
+
+            LimpiarControles(tlpAgregarLibro);
         }
+        private void ValidarControles(Control contenedor, ref bool datosValidos)
+        {
+            foreach (Control control in contenedor.Controls)
+            {
+                // 🔁 Si el control tiene hijos, seguir recorriendo
+                if (control.HasChildren)
+                    ValidarControles(control, ref datosValidos);
+
+                if (control is Guna.UI2.WinForms.Guna2TextBox gunaTextBox)
+                {
+                    if (string.IsNullOrWhiteSpace(gunaTextBox.Text))
+                    {
+                        errorIcono.SetError(gunaTextBox, "Este campo es obligatorio.");
+                        datosValidos = false;
+                    }
+                }
+                else if (control is Guna.UI2.WinForms.Guna2ComboBox gunaCombo)
+                {
+                    if (gunaCombo.SelectedIndex == -1 || gunaCombo.SelectedValue == null)
+                    {
+                        errorIcono.SetError(gunaCombo, "Debe seleccionar una opción.");
+                        datosValidos = false;
+                    }
+                }
+                else if (control is Guna.UI2.WinForms.Guna2NumericUpDown gunaNumeric)
+                {
+                    if (gunaNumeric.Value <= 0)
+                    {
+                        errorIcono.SetError(gunaNumeric, "Ingrese una cantidad válida.");
+                        datosValidos = false;
+                    }
+                }
+                else if (control is Guna.UI2.WinForms.Guna2DateTimePicker gunaDate)
+                {
+                    if (gunaDate.Value == DateTime.MinValue)
+                    {
+                        errorIcono.SetError(gunaDate, "Seleccione una fecha válida.");
+                        datosValidos = false;
+                    }
+                }
+            }
+        }
+
+
         private void iconCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -337,7 +365,7 @@ namespace app.Biblioteca.Formularios
             pnlNuevoAutor.Visible = false;
 
             // 🔹 Redimensionar el formulario a la vista expandida
-            this.Size = new Size(722, 449);
+            this.Size = new Size(714, 556);
             pnlNuevaCategoria.Size = new Size(228, 362); // Ajuste visual dentro del formulario
 
             // 🔹 Limpiar campos
@@ -360,7 +388,7 @@ namespace app.Biblioteca.Formularios
             pnlNuevaCategoria.Visible = false;
 
             // 🔹 Redimensionar formulario
-            this.Size = new Size(722, 449);
+            this.Size = new Size(714,556);
             pnlNuevoAutor.Size = new Size(228, 362);
 
             // 🔹 Limpiar campos
@@ -384,69 +412,113 @@ namespace app.Biblioteca.Formularios
         private void iconCancelarCategoria_Click(object sender, EventArgs e)
         {
             pnlNuevaCategoria.Visible = false;
-            this.Size = new Size(463, 449); // 🔹 Volvemos al tamaño normal
+            this.Size = new Size(442, 556); // 🔹 Volvemos al tamaño normal
         }
         private void iconCancelarAutor_Click(object sender, EventArgs e)
         {
             pnlNuevoAutor.Visible = false;
-            this.Size = new Size(463, 449); // 🔹 Volvemos al tamaño normal
+            this.Size = new Size(442, 556); // 🔹 Volvemos al tamaño normal
         }
         private void iconGuardarCategoria_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtNombreCategoria.Text))
+            {
+                MessageBox.Show("Ingrese un nombre de categoría válido.", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombreCategoria.Focus();
+                return;
+            }
+
             try
             {
-                string nombre = txtNombreCategoria.Text.Trim();
-                if (string.IsNullOrEmpty(nombre))
+                string connectionString = conexionDB.ObtenerConexion();
+                using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
-                    MessageBox.Show("Ingrese un nombre de categoría válido.", "Advertencia",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtNombreCategoria.Focus();
-                    return;
-                }
+                    conexion.Open();
+                    string sql;
+                    SqlCommand command;
 
-                string conexionString = conexionDB.ObtenerConexion();
-                using (SqlConnection conexion = new SqlConnection(conexionString))
-                {
-                    string query;
-
-                    // Si hay ID, actualizamos. Si no, insertamos.
-                    if (!string.IsNullOrEmpty(txtIdCategoria.Text))
+                    bool esNuevo = string.IsNullOrEmpty(txtIdCategoria.Text);
+                    if (esNuevo)
                     {
-                        query = "UPDATE TblCategoria SET nombre = @nombre WHERE idCategoria = @id";
+                        sql = @"INSERT INTO TblCategoria (nombre)
+                        OUTPUT INSERTED.idCategoria
+                        VALUES (@nombre)";
+                        command = new SqlCommand(sql, conexion);
                     }
                     else
                     {
-                        query = "INSERT INTO TblCategoria (nombre) VALUES (@nombre)";
+                        sql = @"UPDATE TblCategoria
+                        SET nombre = @nombre
+                        WHERE idCategoria = @idCategoria";
+                        command = new SqlCommand(sql, conexion);
+                        command.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(txtIdCategoria.Text));
                     }
 
-                    SqlCommand cmd = new SqlCommand(query, conexion);
-                    cmd.Parameters.AddWithValue("@nombre", nombre);
-                    cmd.Parameters.AddWithValue("@id", txtIdCategoria.Text);
+                    command.Parameters.AddWithValue("@nombre", txtNombreCategoria.Text.Trim());
 
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
+                    if (esNuevo)
+                    {
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            int nuevoId = Convert.ToInt32(result);
+                            MessageBox.Show("Categoría agregada con éxito.", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // 🔹 Recargar ComboBox y seleccionar la nueva categoría
+                            bloqueaEventos = true;
+                            CargarCategorias();
+                            cboCategoria.SelectedValue = nuevoId;
+                            bloqueaEventos = false;
+                        }
+                    }
+                    else
+                    {
+                        int filas = command.ExecuteNonQuery();
+                        if (filas > 0)
+                        {
+                            MessageBox.Show("Categoría actualizada con éxito.", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se realizaron cambios en la categoría.", "Información",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        // 🔹 Recargar ComboBox y mantener la categoría seleccionada
+                        bloqueaEventos = true;
+                        CargarCategorias();
+                        cboCategoria.SelectedValue = Convert.ToInt32(txtIdCategoria.Text);
+                        bloqueaEventos = false;
+                    }
+
+                    // 🔹 Redireccionar al panel principal
+                    RedireccionarCategoria();
                 }
-
-                MessageBox.Show("Categoría guardada correctamente.", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-
-                // 🔹 Recargar categorías en el combo
-                CargarCategorias();
-
-                // 🔹 Seleccionar la categoría recién creada o actualizada
-                cboCategoria.SelectedIndex = cboCategoria.FindStringExact(nombre);
-
-                // 🔹 Ocultar panel y volver al tamaño original
-                pnlNuevaCategoria.Visible = false;
-                this.Size = new Size(463, 449);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627 || ex.Number == 2601)
+                {
+                    MessageBox.Show("Ya existe una categoría con el mismo nombre.", "Duplicado",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Error de base de datos: " + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar la categoría: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error inesperado: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           // LimpiarControlesCategoria();
+
+            //LimpiarControlesCategoria();
 
         }
 
@@ -545,7 +617,12 @@ namespace app.Biblioteca.Formularios
         private void RedireccionarAutor()
         {
             pnlNuevoAutor.Visible = false;
-            this.Size = new Size(462, 449);
+            this.Size = new Size(442, 556);
+        }
+        private void RedireccionarCategoria()
+        {
+            pnlNuevaCategoria.Visible = false;
+            this.Size = new Size(442, 556);
         }
         private void iconEliminarCategoria_Click(object sender, EventArgs e)
         {
@@ -588,9 +665,7 @@ namespace app.Biblioteca.Formularios
                         txtIdCategoria.Clear();
                         txtNombreCategoria.Clear();
 
-                        // Volver al tamaño normal del formulario
-                        pnlNuevaCategoria.Visible = false;
-                        this.Size = new Size(462, 449);
+                        
                     }
                     else
                     {
@@ -618,6 +693,8 @@ namespace app.Biblioteca.Formularios
                 MessageBox.Show("Error inesperado: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // Volver al tamaño normal del formulario
+            RedireccionarCategoria();
         }
         private void iconEliminarAutor_Click(object sender, EventArgs e)
         {
@@ -657,15 +734,14 @@ namespace app.Biblioteca.Formularios
                         txtIdAutor.Clear();
                         txtNombreAutor.Clear();
 
-                        pnlNuevoAutor.Visible = false;
-                        this.Size = new Size(462, 449);
+                        
                     }
                     else
                     {
                         MessageBox.Show("No se encontró el autor para eliminar.",
                             "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    LimpiarControlesAutor();
+                    //LimpiarControlesAutor();
                 }
             }
             catch (SqlException ex)
@@ -686,6 +762,7 @@ namespace app.Biblioteca.Formularios
                 MessageBox.Show("Error inesperado: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            RedireccionarAutor();
         }
         private void LimpiarControlesCategoria()
         {
@@ -703,5 +780,7 @@ namespace app.Biblioteca.Formularios
             txtNombreAutor.Focus();
         }
         #endregion
+
+       
     }
 }
