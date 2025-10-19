@@ -41,7 +41,6 @@ namespace app.Biblioteca.Formularios
             {
                 if (esHijoDelPanelContenedor)
                 {
-                    // Cerrar y liberar el formulario activo anterior, si existe
                     if (formularioActivo != null)
                     {
                         formularioActivo.Close();
@@ -50,51 +49,35 @@ namespace app.Biblioteca.Formularios
 
                     formularioActivo = formularioHijo;
 
-                    // Configuración del formulario hijo
                     formularioHijo.TopLevel = false;
                     formularioHijo.FormBorderStyle = FormBorderStyle.None;
                     formularioHijo.Dock = DockStyle.Fill;
 
-                    // ✅ Aseguramos que el PictureBox esté dentro del panel y detrás
-                    if (!panelContendor.Controls.Contains(picImagen))
-                    {
-                        panelContendor.Controls.Add(picImagen);
-                        picImagen.Dock = DockStyle.Fill;
-                        picImagen.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }
+                    panelContendor.Controls.Clear();
+                    panelContendor.Controls.Add(formularioHijo);
+                    panelContendor.Tag = formularioHijo;
 
-                    // Siempre enviar el PictureBox al fondo
-                    picImagen.SendToBack();
-
-                    // ✅ Agregamos el formulario hijo si no está en el panel
-                    if (!panelContendor.Controls.Contains(formularioHijo))
-                    {
-                        panelContendor.Controls.Add(formularioHijo);
-                    }
-
-                    // Traer el formulario al frente y mostrarlo
-                    formularioHijo.BringToFront();
                     formularioHijo.Show();
-
-                   
+                    formularioHijo.BringToFront();
                 }
                 else
                 {
                     formularioHijo.TopLevel = true;
                     formularioHijo.FormBorderStyle = FormBorderStyle.Sizable;
+
                     formularioHijo.ShowDialog();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Se ha generado un error inesperado al cargar el formulario:\n" + ex.Message,
+                MessageBox.Show("Se ha generado un error inesperado al cargar el formulario.",
                                 "Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
         }
 
-       
+
         #endregion
 
         #region OPCIONES DEL MENU

@@ -23,7 +23,7 @@ namespace app.Biblioteca.Formularios
                 {
                     string consulta = @"
                                 SELECT
-                                    idUsuario AS id,
+                                    idUsuario AS Id,
                                     nombre AS Nombre,
                                     apellido AS Apellido,
                                     telefono As Teléfono,
@@ -55,51 +55,7 @@ namespace app.Biblioteca.Formularios
             dgvListado.Columns["Teléfono"].HeaderText = "TELÉFONO";
             dgvListado.Columns["email"].HeaderText = "EMAIL";
         }
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                string connetionString = conexionDB.ObtenerConexion();
-                using (SqlConnection conexion = new SqlConnection(connetionString))
-                {
-                    string texto = txtBuscar.Text.Trim();
-                    string consultaSQL = $@"
-                                   SELECT 
-                                        idUsuario AS Id,
-                                        nombre AS Nombre,
-                                        apellido AS Apellido,
-                                        telefono As Teléfono,
-                                        email AS Email
-                                   FROM TblUsuario
-                                   WHERE nombre LIKE '%{texto}%'
-                                   OR apellido LIKE '%{texto}%'
-                                   OR telefono LIKE '%{texto}%'
-                                   OR email LIKE '%{texto}%'";
-
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(consultaSQL, conexion);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    if (dt.Rows.Count > 0)
-                    {
-                        dgvListado.DataSource = dt;
-                        FormatoGridView();
-                    }
-                    else
-                    {
-                        dgvListado.DataSource = null;
-                        MessageBox.Show("No se encontraron registros con ese criterio.",
-                                        "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar: " + ex.Message);
-            }
-
-        }
+       
         #endregion
 
         #region 2 BOTONES DE COMANDO
@@ -118,16 +74,16 @@ namespace app.Biblioteca.Formularios
                     if (MessageBox.Show("¿Seguro que desea eliminar el registro?", "Confirmación",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        int.TryParse(dgvListado.CurrentRow.Cells["Id"].Value.ToString(), out int idLibro);
+                        int.TryParse(dgvListado.CurrentRow.Cells["Id"].Value.ToString(), out int idUsuario);
                         string connetionString = conexionDB.ObtenerConexion();
 
                         using (SqlConnection conexion = new SqlConnection(connetionString))
                         {
-                            string consulta = "DELETE FROM TblLibro WHERE idLibro = @Id";
+                            string consulta = "DELETE FROM TblUsuario WHERE idUsuario = @Id";
 
 
                             SqlCommand command = new SqlCommand(consulta, conexion);
-                            command.Parameters.AddWithValue("@Id", idLibro);
+                            command.Parameters.AddWithValue("@Id", idUsuario);
 
 
                             conexion.Open();
@@ -196,8 +152,53 @@ namespace app.Biblioteca.Formularios
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+
         #endregion
 
-       
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string connetionString = conexionDB.ObtenerConexion();
+                using (SqlConnection conexion = new SqlConnection(connetionString))
+                {
+                    string texto = txtBuscar.Text.Trim();
+                    string consultaSQL = $@"
+                                   SELECT 
+                                        idUsuario AS Id,
+                                        nombre AS Nombre,
+                                        apellido AS Apellido,
+                                        telefono As Teléfono,
+                                        email AS Email
+                                   FROM TblUsuario
+                                   WHERE nombre LIKE '%{texto}%'
+                                   OR apellido LIKE '%{texto}%'
+                                   OR telefono LIKE '%{texto}%'
+                                   OR email LIKE '%{texto}%'";
+
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(consultaSQL, conexion);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        dgvListado.DataSource = dt;
+                        FormatoGridView();
+                    }
+                    else
+                    {
+                        dgvListado.DataSource = null;
+                        MessageBox.Show("No se encontraron registros con ese criterio.",
+                                        "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar: " + ex.Message);
+            }
+        }
     }
 }

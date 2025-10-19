@@ -132,7 +132,7 @@
             this.tlpAgregarUsuario.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.758621F));
             this.tlpAgregarUsuario.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.7931F));
             this.tlpAgregarUsuario.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.7931F));
-            this.tlpAgregarUsuario.Size = new System.Drawing.Size(406, 343);
+            this.tlpAgregarUsuario.Size = new System.Drawing.Size(406, 401);
             this.tlpAgregarUsuario.TabIndex = 3;
             // 
             // txtId
@@ -150,7 +150,7 @@
             this.txtId.FocusedState.Parent = this.txtId;
             this.txtId.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtId.HoverState.Parent = this.txtId;
-            this.txtId.Location = new System.Drawing.Point(5, 298);
+            this.txtId.Location = new System.Drawing.Point(5, 350);
             this.txtId.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtId.Name = "txtId";
             this.txtId.PasswordChar = '\0';
@@ -169,7 +169,7 @@
             this.label2.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(400, 26);
+            this.label2.Size = new System.Drawing.Size(400, 31);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nombre";
             // 
@@ -179,9 +179,9 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label3.Location = new System.Drawing.Point(3, 73);
+            this.label3.Location = new System.Drawing.Point(3, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(400, 26);
+            this.label3.Size = new System.Drawing.Size(400, 31);
             this.label3.TabIndex = 1;
             this.label3.Text = "Apellido";
             // 
@@ -191,9 +191,9 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label4.Location = new System.Drawing.Point(3, 146);
+            this.label4.Location = new System.Drawing.Point(3, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(400, 26);
+            this.label4.Size = new System.Drawing.Size(400, 31);
             this.label4.TabIndex = 2;
             this.label4.Text = "Teléfono";
             // 
@@ -203,9 +203,9 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label5.Location = new System.Drawing.Point(3, 219);
+            this.label5.Location = new System.Drawing.Point(3, 258);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(400, 26);
+            this.label5.Size = new System.Drawing.Size(400, 31);
             this.label5.TabIndex = 3;
             this.label5.Text = "Email";
             // 
@@ -226,7 +226,7 @@
             this.txtNombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNombre.HoverState.Parent = this.txtNombre;
             this.txtNombre.IconLeft = global::app.Biblioteca.Properties.Resources.Nombre;
-            this.txtNombre.Location = new System.Drawing.Point(5, 32);
+            this.txtNombre.Location = new System.Drawing.Point(5, 37);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
@@ -253,10 +253,10 @@
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmail.HoverState.Parent = this.txtEmail;
             this.txtEmail.IconLeft = global::app.Biblioteca.Properties.Resources.Email;
-            this.txtEmail.Location = new System.Drawing.Point(5, 251);
+            this.txtEmail.Location = new System.Drawing.Point(5, 295);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PasswordChar = '*';
+            this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
             this.txtEmail.ShadowDecoration.Parent = this.txtEmail;
@@ -280,7 +280,7 @@
             this.txtTelefono.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTelefono.HoverState.Parent = this.txtTelefono;
             this.txtTelefono.IconLeft = global::app.Biblioteca.Properties.Resources.Teléfono;
-            this.txtTelefono.Location = new System.Drawing.Point(5, 178);
+            this.txtTelefono.Location = new System.Drawing.Point(5, 209);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PasswordChar = '\0';
@@ -307,7 +307,7 @@
             this.txtApellido.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtApellido.HoverState.Parent = this.txtApellido;
             this.txtApellido.IconLeft = global::app.Biblioteca.Properties.Resources.Apellido;
-            this.txtApellido.Location = new System.Drawing.Point(5, 105);
+            this.txtApellido.Location = new System.Drawing.Point(5, 123);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.PasswordChar = '\0';
@@ -365,7 +365,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(453, 482);
+            this.ClientSize = new System.Drawing.Size(453, 498);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tableLayoutPanel3);

@@ -24,7 +24,7 @@ namespace app.Biblioteca.Formularios
                 {
                     string texto = txtBuscar.Text.Trim();
                     string consultaSQL = $@"
-                    SELECT L.idLibro, L.titulo,
+                    SELECT L.idLibro, L.titulo AS Libro,
                            L.idAutor, A.nombre AS AutorNombre,
                            L.idCategoria, C.nombre AS CategoriaNombre,
                            L.anioPublicacion,

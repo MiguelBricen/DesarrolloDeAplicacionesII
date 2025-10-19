@@ -158,44 +158,90 @@ namespace app.Biblioteca.Formularios
         #endregion
 
         #region 2 BOTONES DE COMANDO
+       
+        private void iconCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+
+
+        #endregion
+
         private void iconGuardar_Click(object sender, EventArgs e)
         {
             errorIcono.Clear();
             bool datosValidos = true;
 
-            foreach (Control control in tlpAgregarUsuario.Controls)
+            // 🔹 Función recursiva para recorrer TODOS los controles del formulario
+            void Validar(Control parent)
             {
-                if (control is Guna.UI2.WinForms.Guna2TextBox gunaTextBox)
+                foreach (Control control in parent.Controls)
                 {
-                    if (string.IsNullOrWhiteSpace(gunaTextBox.Text))
+                    if (control is Guna.UI2.WinForms.Guna2TextBox txt)
                     {
-                        errorIcono.SetError(gunaTextBox, "este campo es obligatorio.");
-                        datosValidos = false;
+                        if (string.IsNullOrWhiteSpace(txt.Text))
+                        {
+                            errorIcono.SetError(txt, "Este campo es obligatorio.");
+                            datosValidos = false;
+                        }
                     }
+                    else if (control is Guna.UI2.WinForms.Guna2ComboBox combo)
+                    {
+                        if (combo.SelectedIndex == -1 || combo.SelectedValue == null)
+                        {
+                            errorIcono.SetError(combo, "Debe seleccionar una opción.");
+                            datosValidos = false;
+                        }
+                    }
+                    else if (control is Guna.UI2.WinForms.Guna2NumericUpDown num)
+                    {
+                        if (num.Value <= 0)
+                        {
+                            errorIcono.SetError(num, "Ingrese una cantidad válida.");
+                            datosValidos = false;
+                        }
+                    }
+                    else if (control is Guna.UI2.WinForms.Guna2DateTimePicker date)
+                    {
+                        if (date.Value == DateTime.MinValue)
+                        {
+                            errorIcono.SetError(date, "Seleccione una fecha válida.");
+                            datosValidos = false;
+                        }
+                    }
+
+                    // 🔁 Recorre los controles hijos (por si hay paneles dentro del tablelayout)
+                    if (control.HasChildren)
+                        Validar(control);
                 }
             }
 
+            // 🔹 Inicia la validación desde el TableLayoutPanel principal
+            Validar(tlpAgregarUsuario);
 
-            if (!datosValidos)
-            {
-                MessageBox.Show("Información incompleta, seran remarcados los campos que faltan", "Validación",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            //if (!datosValidos)
+            //{
+            //    MessageBox.Show("Información incompleta, se marcarán los campos que faltan.",
+            //        "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    return;
+            //}
+
+            // ✅ Si los datos son válidos, capturamos la información
             string nombre = txtNombre.Text.Trim();
             string apellido = txtApellido.Text.Trim();
             string telefono = txtTelefono.Text.Trim();
             string email = txtEmail.Text.Trim();
+           
+
             try
             {
                 if (string.IsNullOrWhiteSpace(txtId.Text.Trim()))
                 {
-                    // Nuevo registro
                     Guardar(nombre, apellido, telefono, email);
                 }
                 else
                 {
-                    // Actualizar
                     if (!int.TryParse(txtId.Text.Trim(), out int idUsuario))
                     {
                         MessageBox.Show("El ID no es válido.", "Validación",
@@ -212,11 +258,8 @@ namespace app.Biblioteca.Formularios
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+
+            LimpiarControles(tlpAgregarUsuario);
         }
-        private void iconCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-        #endregion
     }
 }

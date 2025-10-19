@@ -86,7 +86,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.124087F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.124087F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.759124F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(406, 409);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(406, 419);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // txtIdPrestamo
@@ -105,7 +105,7 @@
             this.txtIdPrestamo.FocusedState.Parent = this.txtIdPrestamo;
             this.txtIdPrestamo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtIdPrestamo.HoverState.Parent = this.txtIdPrestamo;
-            this.txtIdPrestamo.Location = new System.Drawing.Point(5, 376);
+            this.txtIdPrestamo.Location = new System.Drawing.Point(5, 386);
             this.txtIdPrestamo.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtIdPrestamo.Name = "txtIdPrestamo";
             this.txtIdPrestamo.PasswordChar = '\0';
@@ -122,9 +122,9 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label6.Location = new System.Drawing.Point(3, 296);
+            this.label6.Location = new System.Drawing.Point(3, 304);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(400, 37);
+            this.label6.Size = new System.Drawing.Size(400, 38);
             this.label6.TabIndex = 12;
             this.label6.Text = "Fecha devolución";
             // 
@@ -141,7 +141,7 @@
             this.cboLibro.HoverState.Parent = this.cboLibro;
             this.cboLibro.ItemHeight = 30;
             this.cboLibro.ItemsAppearance.Parent = this.cboLibro;
-            this.cboLibro.Location = new System.Drawing.Point(3, 114);
+            this.cboLibro.Location = new System.Drawing.Point(3, 117);
             this.cboLibro.Name = "cboLibro";
             this.cboLibro.ShadowDecoration.Parent = this.cboLibro;
             this.cboLibro.Size = new System.Drawing.Size(379, 36);
@@ -155,7 +155,7 @@
             this.label2.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(400, 37);
+            this.label2.Size = new System.Drawing.Size(400, 38);
             this.label2.TabIndex = 0;
             this.label2.Text = "Usuario";
             // 
@@ -165,9 +165,9 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label3.Location = new System.Drawing.Point(3, 74);
+            this.label3.Location = new System.Drawing.Point(3, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(400, 37);
+            this.label3.Size = new System.Drawing.Size(400, 38);
             this.label3.TabIndex = 1;
             this.label3.Text = "Libro";
             // 
@@ -177,9 +177,9 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label4.Location = new System.Drawing.Point(3, 148);
+            this.label4.Location = new System.Drawing.Point(3, 152);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(400, 37);
+            this.label4.Size = new System.Drawing.Size(400, 38);
             this.label4.TabIndex = 2;
             this.label4.Text = "Cantidad";
             // 
@@ -189,9 +189,9 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label5.Location = new System.Drawing.Point(3, 222);
+            this.label5.Location = new System.Drawing.Point(3, 228);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(400, 37);
+            this.label5.Size = new System.Drawing.Size(400, 38);
             this.label5.TabIndex = 3;
             this.label5.Text = "Fecha préstamo";
             // 
@@ -208,7 +208,7 @@
             this.cboUsuario.HoverState.Parent = this.cboUsuario;
             this.cboUsuario.ItemHeight = 30;
             this.cboUsuario.ItemsAppearance.Parent = this.cboUsuario;
-            this.cboUsuario.Location = new System.Drawing.Point(3, 40);
+            this.cboUsuario.Location = new System.Drawing.Point(3, 41);
             this.cboUsuario.Name = "cboUsuario";
             this.cboUsuario.ShadowDecoration.Parent = this.cboUsuario;
             this.cboUsuario.Size = new System.Drawing.Size(379, 36);
@@ -217,7 +217,7 @@
             // numCantidad
             // 
             this.numCantidad.BackColor = System.Drawing.Color.White;
-            this.numCantidad.Location = new System.Drawing.Point(3, 188);
+            this.numCantidad.Location = new System.Drawing.Point(3, 193);
             this.numCantidad.Name = "numCantidad";
             this.numCantidad.Size = new System.Drawing.Size(120, 31);
             this.numCantidad.TabIndex = 3;
@@ -229,14 +229,14 @@
             // 
             // dtpFechaPrestamo
             // 
-            this.dtpFechaPrestamo.Location = new System.Drawing.Point(3, 262);
+            this.dtpFechaPrestamo.Location = new System.Drawing.Point(3, 269);
             this.dtpFechaPrestamo.Name = "dtpFechaPrestamo";
             this.dtpFechaPrestamo.Size = new System.Drawing.Size(379, 31);
             this.dtpFechaPrestamo.TabIndex = 4;
             // 
             // dtpFechaDevolucion
             // 
-            this.dtpFechaDevolucion.Location = new System.Drawing.Point(3, 336);
+            this.dtpFechaDevolucion.Location = new System.Drawing.Point(3, 345);
             this.dtpFechaDevolucion.Name = "dtpFechaDevolucion";
             this.dtpFechaDevolucion.Size = new System.Drawing.Size(379, 31);
             this.dtpFechaDevolucion.TabIndex = 5;

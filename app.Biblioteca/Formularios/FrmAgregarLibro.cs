@@ -44,8 +44,10 @@ namespace app.Biblioteca.Formularios
                 string connetionString = conexionDB.ObtenerConexion();
                 using (SqlConnection conexion = new SqlConnection(connetionString))
                 {
-                    string consulta = @"INSERT INTO TblLibro(titulo, idAutor, idCategoria, anioPublicacion, cantidad)
-                                           VALUES(@Titulo, @IdAutor, @IdCategoria, @AnioPublicacion, @Cantidad)";
+                    string consulta = @"
+                                        INSERT INTO TblLibro(titulo, idAutor, idCategoria, anioPublicacion, cantidad)
+                                        VALUES(@Titulo, @IdAutor, @IdCategoria, @AnioPublicacion, @Cantidad)";
+
                     SqlCommand command = new SqlCommand(consulta, conexion);
                     command.Parameters.AddWithValue("@Titulo", titulo);
                     command.Parameters.AddWithValue("@IdAutor", idAutor);
@@ -84,13 +86,13 @@ namespace app.Biblioteca.Formularios
                 using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
                     string consulta = @"
-                UPDATE TblLibro
-                SET titulo = @Titulo,
-                    idAutor = @IdAutor,
-                    idCategoria = @IdCategoria,
-                    anioPublicacion = @AnioPublicacion,
-                    cantidad = @Cantidad
-                WHERE idLibro = @IdLibro";
+                    UPDATE TblLibro
+                    SET titulo = @Titulo,
+                        idAutor = @IdAutor,
+                        idCategoria = @IdCategoria,
+                        anioPublicacion = @AnioPublicacion,
+                        cantidad = @Cantidad
+                    WHERE idLibro = @IdLibro";
 
                     SqlCommand command = new SqlCommand(consulta, conexion);
                     command.Parameters.AddWithValue("@IdLibro", idLibro);
@@ -263,8 +265,48 @@ namespace app.Biblioteca.Formularios
             errorIcono.Clear();
             bool datosValidos = true;
 
-            // 🔁 Validar de forma recursiva todos los controles dentro del contenedor
-            ValidarControles(tlpAgregarLibro, ref datosValidos);
+            
+            
+                foreach (Control control in tlpAgregarLibro.Controls)
+                {
+                    if (control is Guna.UI2.WinForms.Guna2TextBox gunaTexBox)
+                    {
+                        if (string.IsNullOrWhiteSpace(gunaTexBox.Text))
+                        {
+                            errorIcono.SetError(gunaTexBox, "Este campo es obligatorio.");
+                            datosValidos = false;
+                        }
+                    }
+                    else if (control is Guna.UI2.WinForms.Guna2ComboBox combo)
+                    {
+                        if (combo.SelectedIndex == -1 || combo.SelectedValue == null)
+                        {
+                            errorIcono.SetError(combo, "Debe seleccionar una opción.");
+                            datosValidos = false;
+                        }
+                    }
+                    else if (control is Guna.UI2.WinForms.Guna2NumericUpDown num)
+                    {
+                        if (num.Value <= 0)
+                        {
+                            errorIcono.SetError(num, "Ingrese una cantidad válida.");
+                            datosValidos = false;
+                        }
+                    }
+                    else if (control is Guna.UI2.WinForms.Guna2DateTimePicker date)
+                    {
+                        if (date.Value == DateTime.MinValue)
+                        {
+                            errorIcono.SetError(date, "Seleccione una fecha válida.");
+                            datosValidos = false;
+                        }
+                    }
+
+                    
+                }
+            
+
+            
 
             if (!datosValidos)
             {
@@ -307,48 +349,7 @@ namespace app.Biblioteca.Formularios
 
             LimpiarControles(tlpAgregarLibro);
         }
-        private void ValidarControles(Control contenedor, ref bool datosValidos)
-        {
-            foreach (Control control in contenedor.Controls)
-            {
-                // 🔁 Si el control tiene hijos, seguir recorriendo
-                if (control.HasChildren)
-                    ValidarControles(control, ref datosValidos);
-
-                if (control is Guna.UI2.WinForms.Guna2TextBox gunaTextBox)
-                {
-                    if (string.IsNullOrWhiteSpace(gunaTextBox.Text))
-                    {
-                        errorIcono.SetError(gunaTextBox, "Este campo es obligatorio.");
-                        datosValidos = false;
-                    }
-                }
-                else if (control is Guna.UI2.WinForms.Guna2ComboBox gunaCombo)
-                {
-                    if (gunaCombo.SelectedIndex == -1 || gunaCombo.SelectedValue == null)
-                    {
-                        errorIcono.SetError(gunaCombo, "Debe seleccionar una opción.");
-                        datosValidos = false;
-                    }
-                }
-                else if (control is Guna.UI2.WinForms.Guna2NumericUpDown gunaNumeric)
-                {
-                    if (gunaNumeric.Value <= 0)
-                    {
-                        errorIcono.SetError(gunaNumeric, "Ingrese una cantidad válida.");
-                        datosValidos = false;
-                    }
-                }
-                else if (control is Guna.UI2.WinForms.Guna2DateTimePicker gunaDate)
-                {
-                    if (gunaDate.Value == DateTime.MinValue)
-                    {
-                        errorIcono.SetError(gunaDate, "Seleccione una fecha válida.");
-                        datosValidos = false;
-                    }
-                }
-            }
-        }
+       
 
 
         private void iconCerrar_Click(object sender, EventArgs e)
