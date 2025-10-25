@@ -220,12 +220,12 @@ namespace app.Biblioteca.Formularios
             // 🔹 Inicia la validación desde el TableLayoutPanel principal
             Validar(tlpAgregarUsuario);
 
-            //if (!datosValidos)
-            //{
-            //    MessageBox.Show("Información incompleta, se marcarán los campos que faltan.",
-            //        "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return;
-            //}
+            if (!datosValidos)
+            {
+                MessageBox.Show("Información incompleta, se marcarán los campos que faltan.",
+                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             // ✅ Si los datos son válidos, capturamos la información
             string nombre = txtNombre.Text.Trim();

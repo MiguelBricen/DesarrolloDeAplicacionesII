@@ -19,40 +19,43 @@ namespace app.Biblioteca.Formularios
         {
             try
             {
-                string connetionString = conexionDB.ObtenerConexion();
-                using (SqlConnection conexion = new SqlConnection(connetionString))
+                string connectionString = conexionDB.ObtenerConexion();
+                using (SqlConnection conexion = new SqlConnection(connectionString))
                 {
                     string texto = txtBuscar.Text.Trim();
-                    string consultaSQL = $@"
-                    SELECT L.idLibro, L.titulo AS Libro,
-                           L.idAutor, A.nombre AS AutorNombre,
-                           L.idCategoria, C.nombre AS CategoriaNombre,
-                           L.anioPublicacion,
-                           L.cantidad
-                    FROM TblLibro L
-                    INNER JOIN TblAutor A ON L.idAutor = A.idAutor
-                    INNER JOIN TblCategoria C ON L.idCategoria = C.idCategoria
-                    WHERE L.titulo LIKE '%{texto}%'
-                       OR A.nombre LIKE '%{texto}%'
-                       OR C.nombre LIKE '%{texto}%'
-                       OR CAST(L.anioPublicacion AS NVARCHAR) LIKE '%{texto}%';";
 
+                    // 🔹 Si el texto puede ser numérico, también buscar por cantidad
+                    string consultaSQL = @"
+                SELECT 
+                    L.idLibro, 
+                    L.titulo AS Libro,
+                    L.idAutor, 
+                    A.nombre AS AutorNombre,
+                    L.idCategoria, 
+                    C.nombre AS CategoriaNombre,
+                    L.anioPublicacion,
+                    L.cantidad
+                FROM TblLibro L
+                INNER JOIN TblAutor A ON L.idAutor = A.idAutor
+                INNER JOIN TblCategoria C ON L.idCategoria = C.idCategoria
+                WHERE 
+                    L.titulo LIKE @texto OR
+                    A.nombre LIKE @texto OR
+                    C.nombre LIKE @texto OR
+                    CAST(L.anioPublicacion AS NVARCHAR) LIKE @texto
+                    OR CAST(L.cantidad AS NVARCHAR) LIKE @texto;"; // ✅ Buscar también por cantidad
 
                     SqlDataAdapter adapter = new SqlDataAdapter(consultaSQL, conexion);
+                    adapter.SelectCommand.Parameters.AddWithValue("@texto", "%" + texto + "%");
+
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    if (dt.Rows.Count > 0)
+                    dgvLibro.DataSource = dt;
+                    FormatoGridView(); // ✅ Aplicar formato siempre, con o sin registros
+
+                    if (dt.Rows.Count == 0 && !string.IsNullOrEmpty(texto))
                     {
-                        dgvLibro.DataSource = dt;
-                        FormatoGridView();
-
-
-
-                    }
-                    else
-                    {
-                        dgvLibro.DataSource = null;
                         MessageBox.Show("No se encontraron registros con ese criterio.",
                                         "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -86,7 +89,9 @@ namespace app.Biblioteca.Formularios
                     adapter.Fill(dt);
 
                     dgvLibro.DataSource = dt;
-                    // dgvListado.Columns[0].Visible = false;
+                    //dgvLibro.Columns[0].Visible = false;
+                    //dgvLibro.Columns[2].Visible = false;
+                    //dgvLibro.Columns[4].Visible = false;
                     FormatoGridView();
                 }
             }
@@ -95,24 +100,42 @@ namespace app.Biblioteca.Formularios
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-       
+
         private void FormatoGridView()
         {
+            if (dgvLibro.Columns.Count == 0 || dgvLibro.DataSource == null)
+                return;
+
             // 🔹 Ocultar columnas de ID
-            dgvLibro.Columns["idLibro"].Visible = false;
-            dgvLibro.Columns["idAutor"].Visible = false;
-            dgvLibro.Columns["idCategoria"].Visible = false;
+            if (dgvLibro.Columns.Contains("idLibro"))
+                dgvLibro.Columns["idLibro"].Visible = false;
+            if (dgvLibro.Columns.Contains("idAutor"))
+                dgvLibro.Columns["idAutor"].Visible = false;
+            if (dgvLibro.Columns.Contains("idCategoria"))
+                dgvLibro.Columns["idCategoria"].Visible = false;
 
-            // 🔹 Ajustar columnas visibles
             dgvLibro.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvLibro.Columns["titulo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            dgvLibro.Columns["titulo"].HeaderText = "TÍTULO";
-            dgvLibro.Columns["AutorNombre"].HeaderText = "AUTOR";
-            dgvLibro.Columns["CategoriaNombre"].HeaderText = "CATEGORÍA";
-            dgvLibro.Columns["anioPublicacion"].HeaderText = "AÑO DE PUBLICACIÓN";
-            dgvLibro.Columns["cantidad"].HeaderText = "CANTIDAD DISPONIBLE";
-            dgvLibro.Columns["cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            // 🔹 Normalizar nombres de columnas: si viene "Libro" o "titulo", usa uno fijo
+            string columnaTitulo = dgvLibro.Columns.Contains("Libro") ? "Libro" : "titulo";
+
+            if (dgvLibro.Columns.Contains(columnaTitulo))
+                dgvLibro.Columns[columnaTitulo].HeaderText = "LIBRO";
+
+            if (dgvLibro.Columns.Contains("AutorNombre"))
+                dgvLibro.Columns["AutorNombre"].HeaderText = "AUTOR";
+
+            if (dgvLibro.Columns.Contains("CategoriaNombre"))
+                dgvLibro.Columns["CategoriaNombre"].HeaderText = "CATEGORÍA";
+
+            if (dgvLibro.Columns.Contains("anioPublicacion"))
+                dgvLibro.Columns["anioPublicacion"].HeaderText = "AÑO DE PUBLICACIÓN";
+
+            if (dgvLibro.Columns.Contains("cantidad"))
+            {
+                dgvLibro.Columns["cantidad"].HeaderText = "CANTIDAD DISPONIBLE";
+                dgvLibro.Columns["cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
         // Guarda el color original temporalmente
         private Color colorOriginal;

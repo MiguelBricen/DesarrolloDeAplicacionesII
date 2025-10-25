@@ -34,7 +34,6 @@
             this.iconCerrar = new FontAwesome.Sharp.IconButton();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.tlpAgregarUsuario = new System.Windows.Forms.TableLayoutPanel();
-            this.txtId = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtId = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tlpAgregarUsuario.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -69,7 +69,7 @@
             this.iconGuardar.Location = new System.Drawing.Point(3, 3);
             this.iconGuardar.Name = "iconGuardar";
             this.iconGuardar.Padding = new System.Windows.Forms.Padding(5);
-            this.iconGuardar.Size = new System.Drawing.Size(201, 46);
+            this.iconGuardar.Size = new System.Drawing.Size(196, 46);
             this.iconGuardar.TabIndex = 8;
             this.iconGuardar.Text = "Guardar";
             this.iconGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -91,10 +91,10 @@
             this.iconCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconCerrar.IconSize = 30;
             this.iconCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconCerrar.Location = new System.Drawing.Point(215, 3);
+            this.iconCerrar.Location = new System.Drawing.Point(205, 3);
             this.iconCerrar.Name = "iconCerrar";
             this.iconCerrar.Padding = new System.Windows.Forms.Padding(5);
-            this.iconCerrar.Size = new System.Drawing.Size(188, 46);
+            this.iconCerrar.Size = new System.Drawing.Size(177, 46);
             this.iconCerrar.TabIndex = 9;
             this.iconCerrar.Text = "Cerrar";
             this.iconCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -110,7 +110,6 @@
             // 
             this.tlpAgregarUsuario.ColumnCount = 1;
             this.tlpAgregarUsuario.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpAgregarUsuario.Controls.Add(this.txtId, 0, 8);
             this.tlpAgregarUsuario.Controls.Add(this.label2, 0, 0);
             this.tlpAgregarUsuario.Controls.Add(this.label3, 0, 2);
             this.tlpAgregarUsuario.Controls.Add(this.label4, 0, 4);
@@ -134,32 +133,6 @@
             this.tlpAgregarUsuario.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.7931F));
             this.tlpAgregarUsuario.Size = new System.Drawing.Size(406, 401);
             this.tlpAgregarUsuario.TabIndex = 3;
-            // 
-            // txtId
-            // 
-            this.txtId.BorderColor = System.Drawing.Color.Transparent;
-            this.txtId.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtId.DefaultText = "";
-            this.txtId.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtId.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtId.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtId.DisabledState.Parent = this.txtId;
-            this.txtId.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtId.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.txtId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtId.FocusedState.Parent = this.txtId;
-            this.txtId.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtId.HoverState.Parent = this.txtId;
-            this.txtId.Location = new System.Drawing.Point(5, 350);
-            this.txtId.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.txtId.Name = "txtId";
-            this.txtId.PasswordChar = '\0';
-            this.txtId.PlaceholderText = "";
-            this.txtId.SelectedText = "";
-            this.txtId.ShadowDecoration.Parent = this.txtId;
-            this.txtId.Size = new System.Drawing.Size(114, 39);
-            this.txtId.TabIndex = 8;
-            this.txtId.Visible = false;
             // 
             // label2
             // 
@@ -320,11 +293,13 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
-            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.34021F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.iconGuardar, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.iconCerrar, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txtId, 2, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(24, 418);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -359,6 +334,32 @@
             this.pictureBox1.Size = new System.Drawing.Size(453, 50);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
+            // 
+            // txtId
+            // 
+            this.txtId.BorderColor = System.Drawing.Color.Transparent;
+            this.txtId.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtId.DefaultText = "";
+            this.txtId.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtId.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtId.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtId.DisabledState.Parent = this.txtId;
+            this.txtId.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtId.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(45)))), ((int)(((byte)(0)))));
+            this.txtId.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtId.FocusedState.Parent = this.txtId;
+            this.txtId.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtId.HoverState.Parent = this.txtId;
+            this.txtId.Location = new System.Drawing.Point(390, 6);
+            this.txtId.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtId.Name = "txtId";
+            this.txtId.PasswordChar = '\0';
+            this.txtId.PlaceholderText = "";
+            this.txtId.SelectedText = "";
+            this.txtId.ShadowDecoration.Parent = this.txtId;
+            this.txtId.Size = new System.Drawing.Size(11, 39);
+            this.txtId.TabIndex = 10;
+            this.txtId.Visible = false;
             // 
             // FrmAgregarUsuario
             // 

@@ -36,7 +36,6 @@
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.tlpAgregarLibro = new System.Windows.Forms.TableLayoutPanel();
-            this.txtIdLibro = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cboCategoria = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@
             this.dtpAnioPublicacion = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.numCantidad = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtIdLibro = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnlNuevaCategoria = new System.Windows.Forms.Panel();
             this.txtIdCategoria = new Guna.UI2.WinForms.Guna2TextBox();
             this.iconCancelarCategoria = new FontAwesome.Sharp.IconButton();
@@ -97,10 +97,10 @@
             this.iconCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconCerrar.IconSize = 30;
             this.iconCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconCerrar.Location = new System.Drawing.Point(200, 3);
+            this.iconCerrar.Location = new System.Drawing.Point(182, 3);
             this.iconCerrar.Name = "iconCerrar";
             this.iconCerrar.Padding = new System.Windows.Forms.Padding(5);
-            this.iconCerrar.Size = new System.Drawing.Size(182, 46);
+            this.iconCerrar.Size = new System.Drawing.Size(164, 46);
             this.iconCerrar.TabIndex = 10;
             this.iconCerrar.Text = "Cerrar";
             this.iconCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -125,7 +125,7 @@
             this.iconGuardar.Location = new System.Drawing.Point(3, 3);
             this.iconGuardar.Name = "iconGuardar";
             this.iconGuardar.Padding = new System.Windows.Forms.Padding(5);
-            this.iconGuardar.Size = new System.Drawing.Size(191, 46);
+            this.iconGuardar.Size = new System.Drawing.Size(173, 46);
             this.iconGuardar.TabIndex = 9;
             this.iconGuardar.Text = "Guardar";
             this.iconGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -149,7 +149,6 @@
             this.tlpAgregarLibro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
             this.tlpAgregarLibro.ColumnCount = 1;
             this.tlpAgregarLibro.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpAgregarLibro.Controls.Add(this.txtIdLibro, 0, 10);
             this.tlpAgregarLibro.Controls.Add(this.label9, 0, 8);
             this.tlpAgregarLibro.Controls.Add(this.cboCategoria, 0, 7);
             this.tlpAgregarLibro.Controls.Add(this.label2, 0, 0);
@@ -177,32 +176,6 @@
             this.tlpAgregarLibro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpAgregarLibro.Size = new System.Drawing.Size(388, 398);
             this.tlpAgregarLibro.TabIndex = 4;
-            // 
-            // txtIdLibro
-            // 
-            this.txtIdLibro.BorderColor = System.Drawing.Color.Transparent;
-            this.txtIdLibro.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtIdLibro.DefaultText = "";
-            this.txtIdLibro.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtIdLibro.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtIdLibro.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtIdLibro.DisabledState.Parent = this.txtIdLibro;
-            this.txtIdLibro.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtIdLibro.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
-            this.txtIdLibro.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIdLibro.FocusedState.Parent = this.txtIdLibro;
-            this.txtIdLibro.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtIdLibro.HoverState.Parent = this.txtIdLibro;
-            this.txtIdLibro.Location = new System.Drawing.Point(5, 377);
-            this.txtIdLibro.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.txtIdLibro.Name = "txtIdLibro";
-            this.txtIdLibro.PasswordChar = '\0';
-            this.txtIdLibro.PlaceholderText = "";
-            this.txtIdLibro.SelectedText = "";
-            this.txtIdLibro.ShadowDecoration.Parent = this.txtIdLibro;
-            this.txtIdLibro.Size = new System.Drawing.Size(351, 15);
-            this.txtIdLibro.TabIndex = 14;
-            this.txtIdLibro.Visible = false;
             // 
             // label9
             // 
@@ -271,7 +244,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(382, 27);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Fecha de publicación";
+            this.label4.Text = "Año de publicación";
             // 
             // label5
             // 
@@ -362,9 +335,11 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
-            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.32824F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.78371F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel3.Controls.Add(this.txtIdLibro, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.iconGuardar, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.iconCerrar, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(24, 473);
@@ -373,6 +348,32 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(385, 52);
             this.tableLayoutPanel3.TabIndex = 6;
+            // 
+            // txtIdLibro
+            // 
+            this.txtIdLibro.BorderColor = System.Drawing.Color.Transparent;
+            this.txtIdLibro.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIdLibro.DefaultText = "";
+            this.txtIdLibro.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtIdLibro.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtIdLibro.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIdLibro.DisabledState.Parent = this.txtIdLibro;
+            this.txtIdLibro.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIdLibro.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
+            this.txtIdLibro.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIdLibro.FocusedState.Parent = this.txtIdLibro;
+            this.txtIdLibro.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIdLibro.HoverState.Parent = this.txtIdLibro;
+            this.txtIdLibro.Location = new System.Drawing.Point(354, 6);
+            this.txtIdLibro.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtIdLibro.Name = "txtIdLibro";
+            this.txtIdLibro.PasswordChar = '\0';
+            this.txtIdLibro.PlaceholderText = "";
+            this.txtIdLibro.SelectedText = "";
+            this.txtIdLibro.ShadowDecoration.Parent = this.txtIdLibro;
+            this.txtIdLibro.Size = new System.Drawing.Size(21, 40);
+            this.txtIdLibro.TabIndex = 15;
+            this.txtIdLibro.Visible = false;
             // 
             // pnlNuevaCategoria
             // 
@@ -389,6 +390,7 @@
             this.pnlNuevaCategoria.Name = "pnlNuevaCategoria";
             this.pnlNuevaCategoria.Size = new System.Drawing.Size(228, 362);
             this.pnlNuevaCategoria.TabIndex = 10;
+            this.pnlNuevaCategoria.Visible = false;
             // 
             // txtIdCategoria
             // 
@@ -548,6 +550,7 @@
             this.pnlNuevoAutor.Name = "pnlNuevoAutor";
             this.pnlNuevoAutor.Size = new System.Drawing.Size(228, 212);
             this.pnlNuevoAutor.TabIndex = 11;
+            this.pnlNuevoAutor.Visible = false;
             // 
             // txtApellidoAutor
             // 
@@ -746,7 +749,7 @@
             this.pictureBox1.Image = global::app.Biblioteca.Properties.Resources.LibroAbierto__1_;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(442, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(445, 50);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
@@ -788,7 +791,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(16)))), ((int)(((byte)(57)))));
-            this.ClientSize = new System.Drawing.Size(442, 556);
+            this.ClientSize = new System.Drawing.Size(445, 556);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlNuevoAutor);

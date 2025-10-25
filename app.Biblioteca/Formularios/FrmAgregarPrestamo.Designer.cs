@@ -240,7 +240,6 @@
             this.dtpFechaDevolucion.Name = "dtpFechaDevolucion";
             this.dtpFechaDevolucion.Size = new System.Drawing.Size(379, 31);
             this.dtpFechaDevolucion.TabIndex = 5;
-            this.dtpFechaDevolucion.ValueChanged += new System.EventHandler(this.dtpFechaDevolucion_ValueChanged);
             // 
             // iconDevolver
             // 
@@ -378,7 +377,6 @@
             this.Name = "FrmAgregarPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarPrestamo";
-            this.Load += new System.EventHandler(this.FrmAgregarPrestamo_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();

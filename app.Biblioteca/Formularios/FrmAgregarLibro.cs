@@ -17,6 +17,8 @@ namespace app.Biblioteca.Formularios
             InitializeComponent();
             CargarAutores();
             CargarCategorias();
+            this.KeyPress += ValidacionEntrada.PasarFocus;
+            this.KeyDown += ValidacionEntrada.ControlesEsc;
             txtTitulo.Focus(); // Enfoca el campo principal
         }
         public FrmAgregarLibro(int idLibro, string titulo, int idAutor, int idCategoria, DateTime anioPublicacion, int cantidad)
@@ -24,6 +26,8 @@ namespace app.Biblioteca.Formularios
             InitializeComponent();
             CargarAutores();
             CargarCategorias();
+            this.KeyPress += ValidacionEntrada.PasarFocus;
+            this.KeyDown += ValidacionEntrada.ControlesEsc;
 
             txtIdLibro.Text = idLibro.ToString();
             txtTitulo.Text = titulo;
@@ -263,58 +267,12 @@ namespace app.Biblioteca.Formularios
         {
 
             errorIcono.Clear();
-            bool datosValidos = true;
 
-            
-            
-                foreach (Control control in tlpAgregarLibro.Controls)
-                {
-                    if (control is Guna.UI2.WinForms.Guna2TextBox gunaTexBox)
-                    {
-                        if (string.IsNullOrWhiteSpace(gunaTexBox.Text))
-                        {
-                            errorIcono.SetError(gunaTexBox, "Este campo es obligatorio.");
-                            datosValidos = false;
-                        }
-                    }
-                    else if (control is Guna.UI2.WinForms.Guna2ComboBox combo)
-                    {
-                        if (combo.SelectedIndex == -1 || combo.SelectedValue == null)
-                        {
-                            errorIcono.SetError(combo, "Debe seleccionar una opción.");
-                            datosValidos = false;
-                        }
-                    }
-                    else if (control is Guna.UI2.WinForms.Guna2NumericUpDown num)
-                    {
-                        if (num.Value <= 0)
-                        {
-                            errorIcono.SetError(num, "Ingrese una cantidad válida.");
-                            datosValidos = false;
-                        }
-                    }
-                    else if (control is Guna.UI2.WinForms.Guna2DateTimePicker date)
-                    {
-                        if (date.Value == DateTime.MinValue)
-                        {
-                            errorIcono.SetError(date, "Seleccione una fecha válida.");
-                            datosValidos = false;
-                        }
-                    }
-
-                    
-                }
-            
-
-            
-
-            if (!datosValidos)
-            {
-                MessageBox.Show("Información incompleta, se marcarán los campos que faltan.",
-                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            // 🔹 Validar campos antes de continuar
+            if (!ValidarCampos())
                 return;
-            }
 
+            
             // ✅ Obtener datos del formulario
             string titulo = txtTitulo.Text.Trim();
             int idAutor = Convert.ToInt32(cboAutor.SelectedValue);
@@ -347,9 +305,78 @@ namespace app.Biblioteca.Formularios
                 MessageBox.Show("Error: " + ex.Message);
             }
 
-            LimpiarControles(tlpAgregarLibro);
+            //LimpiarControles(tlpAgregarLibro);
         }
-       
+
+        private bool ValidarCampos()
+        {
+            errorIcono.Clear();
+            bool hayCamposVacios = false;
+
+            // 🔹 Validar Título
+            if (string.IsNullOrWhiteSpace(txtTitulo.Text))
+            {
+                errorIcono.SetError(txtTitulo, "Ingrese el título del libro.");
+                hayCamposVacios = true;
+            }
+
+            // 🔹 Validar Autor
+            if (cboAutor.SelectedIndex == -1)
+            {
+                errorIcono.SetError(cboAutor, "Seleccione un autor.");
+                hayCamposVacios = true;
+            }
+
+            // 🔹 Validar Categoría
+            if (cboCategoria.SelectedIndex == -1)
+            {
+                errorIcono.SetError(cboCategoria, "Seleccione una categoría.");
+                hayCamposVacios = true;
+            }
+
+            // 🔹 Validar Fecha de publicación
+            if (dtpAnioPublicacion.Value == DateTime.MinValue)
+            {
+                errorIcono.SetError(dtpAnioPublicacion, "Seleccione una fecha válida.");
+                hayCamposVacios = true;
+            }
+
+            // 🔹 Validar Cantidad
+            if (numCantidad.Value <= 0)
+            {
+                // ⚠️ Si todos los demás campos están vacíos, se trata como "campos incompletos"
+                //    pero si los demás están llenos, se trata como "cantidad inválida"
+                if (!hayCamposVacios &&
+                    !string.IsNullOrWhiteSpace(txtTitulo.Text) &&
+                    cboAutor.SelectedIndex != -1 &&
+                    cboCategoria.SelectedIndex != -1 &&
+                    dtpAnioPublicacion.Value != DateTime.MinValue)
+                {
+                    MessageBox.Show("La cantidad debe ser mayor que 0.",
+                        "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    errorIcono.SetError(numCantidad, "Ingrese una cantidad válida (mayor a 0).");
+                    numCantidad.Focus();
+                    return false;
+                }
+
+                // Si hay otros campos vacíos, solo marcamos el error visual
+                errorIcono.SetError(numCantidad, "Ingrese una cantidad válida (mayor a 0).");
+                hayCamposVacios = true;
+            }
+
+            // 🔹 Mensaje general si hay algún campo vacío
+            if (hayCamposVacios)
+            {
+                MessageBox.Show("Información incompleta, se marcarán los campos que faltan.",
+                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            // ✅ Si todo está correcto
+            return true;
+        }
+
+
 
 
         private void iconCerrar_Click(object sender, EventArgs e)

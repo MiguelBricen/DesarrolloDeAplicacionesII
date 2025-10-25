@@ -43,6 +43,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.menuActive = new System.Windows.Forms.PictureBox();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.toolMenuSuperior = new System.Windows.Forms.ToolStrip();
             this.toolUsuari = new FontAwesome.Sharp.IconDropDownButton();
@@ -61,15 +62,16 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolCerrarSesion = new FontAwesome.Sharp.IconToolStripButton();
             this.panelContendor = new System.Windows.Forms.Panel();
+            this.picImagen = new System.Windows.Forms.PictureBox();
             this.toolUsuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.picImagen = new System.Windows.Forms.PictureBox();
             this.panelSuperior.SuspendLayout();
             this.panelSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.menuActive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.toolMenuSuperior.SuspendLayout();
             this.panelContendor.SuspendLayout();
@@ -88,7 +90,7 @@
             this.btnUsuario.Location = new System.Drawing.Point(2, 126);
             this.btnUsuario.Name = "btnUsuario";
             this.btnUsuario.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.btnUsuario.Size = new System.Drawing.Size(163, 76);
+            this.btnUsuario.Size = new System.Drawing.Size(162, 76);
             this.btnUsuario.TabIndex = 9;
             this.btnUsuario.Text = "Usuario";
             this.btnUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -138,7 +140,7 @@
             this.btnLibro.BackColor = System.Drawing.Color.OliveDrab;
             this.btnLibro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLibro.FlatAppearance.BorderSize = 0;
-            this.btnLibro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
+            this.btnLibro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLibro.ForeColor = System.Drawing.Color.White;
             this.btnLibro.Image = global::app.Biblioteca.Properties.Resources.Libro;
@@ -186,14 +188,15 @@
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(137)))), ((int)(((byte)(17)))));
-            this.panelSidebar.Controls.Add(this.btnUsuario);
             this.panelSidebar.Controls.Add(this.pictureBox4);
             this.panelSidebar.Controls.Add(this.pictureBox3);
             this.panelSidebar.Controls.Add(this.pictureBox2);
+            this.panelSidebar.Controls.Add(this.pictureBox1);
+            this.panelSidebar.Controls.Add(this.btnUsuario);
             this.panelSidebar.Controls.Add(this.btnCerrar);
             this.panelSidebar.Controls.Add(this.btnPrestamo);
             this.panelSidebar.Controls.Add(this.btnLibro);
-            this.panelSidebar.Controls.Add(this.pictureBox1);
+            this.panelSidebar.Controls.Add(this.menuActive);
             this.panelSidebar.Controls.Add(this.picLogo);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -208,7 +211,7 @@
             this.pictureBox4.Location = new System.Drawing.Point(1, 410);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(2, 76);
-            this.pictureBox4.TabIndex = 8;
+            this.pictureBox4.TabIndex = 12;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
@@ -217,7 +220,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(1, 314);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(2, 76);
-            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabIndex = 11;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
@@ -226,17 +229,25 @@
             this.pictureBox2.Location = new System.Drawing.Point(1, 221);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(2, 76);
-            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(35)))), ((int)(((byte)(71)))));
-            this.pictureBox1.Location = new System.Drawing.Point(1, 126);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 126);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(2, 76);
-            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // menuActive
+            // 
+            this.menuActive.Location = new System.Drawing.Point(1, 126);
+            this.menuActive.Name = "menuActive";
+            this.menuActive.Size = new System.Drawing.Size(2, 76);
+            this.menuActive.TabIndex = 2;
+            this.menuActive.TabStop = false;
             // 
             // picLogo
             // 
@@ -411,6 +422,18 @@
             this.panelContendor.Size = new System.Drawing.Size(1106, 625);
             this.panelContendor.TabIndex = 8;
             // 
+            // picImagen
+            // 
+            this.picImagen.BackColor = System.Drawing.Color.White;
+            this.picImagen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picImagen.Image = global::app.Biblioteca.Properties.Resources.biblioteca;
+            this.picImagen.Location = new System.Drawing.Point(0, 0);
+            this.picImagen.Name = "picImagen";
+            this.picImagen.Size = new System.Drawing.Size(1106, 625);
+            this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImagen.TabIndex = 0;
+            this.picImagen.TabStop = false;
+            // 
             // toolUsuario
             // 
             this.toolUsuario.AutoSize = false;
@@ -427,18 +450,6 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(143, 24);
             this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // picImagen
-            // 
-            this.picImagen.BackColor = System.Drawing.Color.White;
-            this.picImagen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picImagen.Image = global::app.Biblioteca.Properties.Resources.biblioteca;
-            this.picImagen.Location = new System.Drawing.Point(0, 0);
-            this.picImagen.Name = "picImagen";
-            this.picImagen.Size = new System.Drawing.Size(1106, 625);
-            this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picImagen.TabIndex = 0;
-            this.picImagen.TabStop = false;
             // 
             // MDIMenu
             // 
@@ -465,6 +476,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.menuActive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.toolMenuSuperior.ResumeLayout(false);
             this.toolMenuSuperior.PerformLayout();
@@ -497,11 +509,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripUsuario;
         private System.Windows.Forms.Panel panelContendor;
         private System.Windows.Forms.PictureBox picLogo;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox menuActive;
         private System.Windows.Forms.Button btnLibro;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnPrestamo;
         private System.Windows.Forms.Button btnUsuario;
@@ -509,6 +518,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.PictureBox picImagen;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

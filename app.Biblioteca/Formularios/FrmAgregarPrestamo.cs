@@ -56,7 +56,7 @@ namespace app.Biblioteca.Formularios
             CargarCombos();
             cboUsuario.SelectedIndex = -1; // sin selección por defecto
             cboLibro.SelectedIndex = -1;
-            numCantidad.Value = 1;
+            numCantidad.Value = 0;
             dtpFechaPrestamo.Value = DateTime.Now;
             dtpFechaDevolucion.Value = DateTime.Now.AddDays(7);
         }
@@ -240,6 +240,36 @@ namespace app.Biblioteca.Formularios
                 MessageBox.Show("La fecha de devolución debe ser posterior a la fecha de préstamo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+
+            // 🔹 Validar que haya suficientes libros disponibles
+            if (cboLibro.SelectedIndex != -1)
+            {
+                int idLibroSeleccionado = Convert.ToInt32(cboLibro.SelectedValue);
+
+                string conexionString = conexionDB.ObtenerConexion();
+                using (SqlConnection conexion = new SqlConnection(conexionString))
+                {
+                    conexion.Open();
+                    using (SqlCommand cmd = new SqlCommand("SELECT cantidad FROM TblLibro WHERE idLibro = @idLibro", conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@idLibro", idLibroSeleccionado);
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            int cantidadDisponible = Convert.ToInt32(result);
+
+                            if (numCantidad.Value > cantidadDisponible)
+                            {
+                                MessageBox.Show($"Libros insuficientes para su préstamo.\nCantidad disponible: {cantidadDisponible}",
+                                    "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+
             return true;
         }
 
@@ -343,10 +373,7 @@ namespace app.Biblioteca.Formularios
 
        
 
-        private void dtpFechaDevolucion_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
+       
 
         private void iconDevolver_Click(object sender, EventArgs e)
         {
@@ -358,10 +385,6 @@ namespace app.Biblioteca.Formularios
 
         }
 
-        private void FrmAgregarPrestamo_Load(object sender, EventArgs e)
-        {
-           
-
-        }
+      
     }
 }

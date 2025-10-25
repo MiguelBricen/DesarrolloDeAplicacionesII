@@ -84,6 +84,9 @@ namespace app.Biblioteca.Formularios
         private void toolStripUsuario_Click(object sender, System.EventArgs e)
         {
             AbrirFormulario(new FrmUsuario(), true);
+           
+           
+            
         }
 
         private void toolStripLibro_Click(object sender, EventArgs e)
@@ -95,6 +98,9 @@ namespace app.Biblioteca.Formularios
         {
             Close();
         }
+
+
+
 
 
         #endregion
